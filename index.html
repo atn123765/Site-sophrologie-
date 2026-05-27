@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,35 +30,92 @@ body{
 .hero{
   position:relative;
   min-height:100vh;
-  padding:30px;
   overflow:hidden;
+  padding:30px;
   background:linear-gradient(135deg,#f7f3eb,#ece6db);
   display:flex;
   flex-direction:column;
 }
 
+/* BLOBS */
+.blur{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:0.6;
+}
+
+.blur1{
+  width:400px;
+  height:400px;
+  background:#c7d5bf;
+  top:-120px;
+  right:-100px;
+}
+
+.blur2{
+  width:300px;
+  height:300px;
+  background:#d7b79f;
+  bottom:-100px;
+  left:-80px;
+}
+
 /* NAVBAR */
 .navbar{
+  position:relative;
+  z-index:2;
+
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
+
   padding:18px 28px;
+
   border-radius:999px;
+
   background:rgba(255,255,255,0.35);
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+
   border:1px solid rgba(255,255,255,0.4);
+
+  box-shadow:0 10px 35px rgba(0,0,0,0.06);
 }
 
 /* LOGO */
 .logo{
   font-family:'Cormorant Garamond', serif;
-  font-size:1.6rem;
+  font-size:1.8rem;
+  font-weight:500;
 }
 
 .logo span{
   display:block;
-  font-size:0.7rem;
-  letter-spacing:3px;
+  font-size:0.8rem;
+  letter-spacing:4px;
+  opacity:0.7;
+}
+
+/* NAV LINKS */
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#555;
+}
+
+/* BUTTON */
+.nav-btn{
+  border:none;
+  padding:12px 22px;
+  border-radius:999px;
+  cursor:pointer;
+  background:#2b2b2b;
+  color:white;
 }
 
 /* HERO CONTENT */
@@ -69,11 +126,16 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
+  max-width:800px;
+  margin:auto;
 }
 
 /* TITLE */
 .hero h1{
-  font-size:4rem;
+  font-size:5rem;
+  line-height:1.05;
+  font-weight:300;
+  color:#222;
 }
 
 .hero h1 span{
@@ -82,7 +144,43 @@ body{
   font-family:'Cormorant Garamond', serif;
 }
 
-/* FADE IN */
+/* TEXT */
+.hero p{
+  margin-top:28px;
+  font-size:1.1rem;
+  color:#666;
+  max-width:600px;
+}
+
+/* BUTTONS */
+.hero-buttons{
+  display:flex;
+  gap:18px;
+  margin-top:40px;
+}
+
+.primary-btn,
+.secondary-btn{
+  padding:16px 30px;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+.primary-btn{
+  background:#222;
+  color:white;
+  border:none;
+}
+
+.secondary-btn{
+  background:rgba(255,255,255,0.35);
+  border:1px solid rgba(255,255,255,0.5);
+}
+
+/* ===================== */
+/* FADE IN ANIMATION */
+/* ===================== */
+
 .fade-in{
   opacity:0;
   transform:translateY(40px);
@@ -96,13 +194,25 @@ body{
 
 /* MOBILE */
 @media(max-width:900px){
+
   .hero h1{
-    font-size:2.5rem;
+    font-size:3rem;
   }
 
   .navbar{
     flex-direction:column;
-    gap:10px;
+    gap:15px;
+    border-radius:35px;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+    width:100%;
+  }
+
+  .primary-btn,
+  .secondary-btn{
+    width:100%;
   }
 }
 
@@ -114,29 +224,45 @@ body{
 
 <section class="hero">
 
-  <nav class="navbar">
+  <nav class="navbar fade-in">
+
     <div class="logo">
       SYLVIE PONS
       <span>SOPHROLOGIE</span>
     </div>
 
-    <div>
-      Accueil | À propos | Séances | Contact
+    <div class="nav-links">
+      <a href="#">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">Séances</a>
+      <a href="#">Contact</a>
     </div>
+
+    <button class="nav-btn">Réserver</button>
+
   </nav>
 
   <div class="hero-content fade-in">
 
     <h1>
-      Découvrez<br>
+      Découvrez <br>
       <span>la sophrologie</span>
     </h1>
 
     <p>
-      La sophrologie aide à réduire le stress et améliorer le bien-être.
+      La sophrologie vous accompagne pour réduire le stress,
+      améliorer le sommeil et retrouver un équilibre intérieur.
     </p>
 
+    <div class="hero-buttons">
+      <button class="primary-btn">Commencer</button>
+      <button class="secondary-btn">Découvrir</button>
+    </div>
+
   </div>
+
+  <div class="blur blur1"></div>
+  <div class="blur blur2"></div>
 
 </section>
 
