@@ -21,7 +21,7 @@
   box-sizing:border-box;
 }
 
-/* SMOOTH SCROLL */
+/* SCROLL */
 html{
   scroll-behavior:smooth;
 }
@@ -182,10 +182,7 @@ body{
   border:1px solid rgba(255,255,255,0.5);
 }
 
-/* ===================== */
-/* SCROLL ANIMATION */
-/* ===================== */
-
+/* FADE IN */
 .fade-in{
   opacity:0;
   transform:translateY(60px);
@@ -195,6 +192,33 @@ body{
 .fade-in.show{
   opacity:1;
   transform:translateY(0);
+}
+
+/* SECTION 2 (AJOUT SANS CHANGER DESIGN EXISTANT) */
+.section{
+  min-height:100vh;
+  padding:80px 30px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+}
+
+.section h2{
+  font-size:2.8rem;
+  font-family:'Cormorant Garamond', serif;
+  color:#222;
+  margin-bottom:20px;
+}
+
+.section p{
+  max-width:750px;
+  font-size:1.1rem;
+  color:#555;
+  line-height:1.8;
 }
 
 /* MOBILE */
@@ -227,9 +251,11 @@ body{
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
 
   <nav class="navbar fade-in">
+
     <div class="logo">
       SYLVIE PONS
       <span>SOPHROLOGIE</span>
@@ -243,6 +269,7 @@ body{
     </div>
 
     <button class="nav-btn">Réserver</button>
+
   </nav>
 
   <div class="hero-content fade-in">
@@ -269,7 +296,20 @@ body{
 
 </section>
 
-<!-- JS SCROLL -->
+<!-- SECTION 2 -->
+<section class="section fade-in">
+
+  <h2>Qu’est-ce que la sophrologie ?</h2>
+
+  <p>
+    La sophrologie est une méthode douce basée sur la respiration,
+    la relaxation et la visualisation mentale.
+    Elle aide à réduire le stress et améliorer le bien-être.
+  </p>
+
+</section>
+
+<!-- SCRIPT SCROLL -->
 <script>
 const elements = document.querySelectorAll('.fade-in');
 
