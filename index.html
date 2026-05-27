@@ -1,17 +1,136 @@
-<!-- GOOGLE FONT -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<!-- HERO GLASSMORPHISM -->
+<style>
+
+/* ===== BASE ===== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f5f1e8;
+  font-family:Arial, sans-serif;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  padding:30px;
+  background:linear-gradient(135deg,#f7f3eb,#ece6db);
+  display:flex;
+  flex-direction:column;
+}
+
+/* BLOBS */
+
+.blur{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:0.6;
+}
+
+.blur1{
+  width:400px;
+  height:400px;
+  background:#c7d5bf;
+  top:-120px;
+  right:-100px;
+}
+
+.blur2{
+  width:300px;
+  height:300px;
+  background:#d7b79f;
+  bottom:-100px;
+  left:-80px;
+}
+
+/* NAVBAR */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 28px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.35);
+  backdrop-filter:blur(22px);
+  border:1px solid rgba(255,255,255,0.4);
+}
+
+/* LOGO */
+
+.logo{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.8rem;
+}
+
+.logo span{
+  display:block;
+  font-size:0.8rem;
+  opacity:0.7;
+}
+
+/* HERO CONTENT */
+
+.hero-content{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+/* TITLE */
+
+.hero h1{
+  font-size:5rem;
+  font-weight:300;
+}
+
+.hero h1 span{
+  color:#ba8666;
+  font-style:italic;
+}
+
+/* FADE IN */
+
+.fade-in{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s ease;
+}
+
+.fade-in.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+</style>
+
+</head>
+
+<body>
 
 <section class="hero">
 
-  <!-- NAVBAR -->
-
-  <nav class="navbar">
+  <nav class="navbar fade-in">
 
     <div class="logo">
       SYLVIE PONS
@@ -29,13 +148,7 @@
 
   </nav>
 
-  <!-- HERO CONTENT -->
-
-  <div class="hero-content">
-
-    <div class="hero-badge">
-       Sophrologie & Bien-être
-    </div>
+  <div class="hero-content fade-in">
 
     <h1>
       Découvrez <br>
@@ -43,41 +156,20 @@
     </h1>
 
     <p>
-      La sophrologie vous accompagne à mieux gérer le stresse,
-      améliorer votre sommeil et renforcer votre bien être intérieur.
+      La sophrologie vous accompagne à mieux gérer le stress,
+      améliorer votre sommeil et renforcer votre bien-être.
     </p>
 
-    <div class="hero-buttons">
-      <button class="primary-btn">Commencer</button>
-      <button class="secondary-btn">Découvrir</button>
-    </div>
-
   </div>
-
-  <!-- BLOBS -->
 
   <div class="blur blur1"></div>
   <div class="blur blur2"></div>
 
-<p class="fade-in">
-
 </section>
 
+<!-- JS ICI (IMPORTANT) -->
 
-
-<style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  background:#f5f1e8;
-  font-family:Arial, sans-serif;
-
-  <script>
+<script>
 const elements = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver((entries) => {
@@ -90,333 +182,6 @@ const observer = new IntersectionObserver((entries) => {
 
 elements.forEach(el => observer.observe(el));
 </script>
-}
 
-/* HERO */
-
-.hero{
-  position:relative;
-  min-height:100vh;
-  overflow:hidden;
-
-  padding:30px;
-
-  background:
-  linear-gradient(
-    135deg,
-    #f7f3eb 0%,
-    #ece6db 100%
-  );
-
-  display:flex;
-  flex-direction:column;
-}
-
-/* BLOBS */
-
-.blur{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(90px);
-  opacity:0.6;
-}
-
-.blur1{
-  width:400px;
-  height:400px;
-
-  background:#c7d5bf;
-
-  top:-120px;
-  right:-100px;
-}
-
-.blur2{
-  width:300px;
-  height:300px;
-
-  background:#d7b79f;
-
-  bottom:-100px;
-  left:-80px;
-}
-
-/* NAVBAR */
-
-.navbar{
-  position:relative;
-  z-index:2;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:18px 28px;
-
-  border-radius:999px;
-
-  background:rgba(255,255,255,0.35);
-
-  backdrop-filter:blur(22px);
-  -webkit-backdrop-filter:blur(22px);
-
-  border:1px solid rgba(255,255,255,0.4);
-
-  box-shadow:
-  0 10px 35px rgba(0,0,0,0.06);
-}
-
-/* LOGO */
-
-.logo{
-  font-family:'Cormorant Garamond', serif;
-
-  font-size:1.8rem;
-  line-height:1;
-
-  font-weight:500;
-
-  letter-spacing:1px;
-
-  color:#2b2b2b;
-}
-
-.logo span{
-  display:block;
-
-  font-size:0.8rem;
-
-  letter-spacing:4px;
-
-  margin-top:4px;
-
-  opacity:0.7;
-}
-
-/* LINKS */
-
-.nav-links{
-  display:flex;
-  gap:30px;
-}
-
-.nav-links a{
-  text-decoration:none;
-
-  color:#555;
-
-  font-size:0.95rem;
-
-  transition:0.3s;
-}
-
-.nav-links a:hover{
-  color:#000;
-}
-
-/* BUTTON */
-
-.nav-btn{
-  border:none;
-
-  padding:12px 22px;
-
-  border-radius:999px;
-
-  cursor:pointer;
-
-  background:#2b2b2b;
-  color:white;
-
-  transition:0.3s;
-}
-
-.nav-btn:hover{
-  transform:translateY(-2px);
-
-  background:#3d3d3d;
-}
-
-/* HERO CONTENT */
-
-.hero-content{
-  position:relative;
-  z-index:2;
-
-  flex:1;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
-  text-align:center;
-
-  max-width:800px;
-
-  margin:auto;
-}
-
-/* BADGE */
-
-.hero-badge{
-  padding:10px 20px;
-
-  border-radius:999px;
-
-  background:rgba(255,255,255,0.4);
-
-  backdrop-filter:blur(16px);
-
-  border:1px solid rgba(255,255,255,0.5);
-
-  color:#666;
-
-  font-size:0.85rem;
-
-  margin-bottom:30px;
-}
-
-/* TITLE */
-
-.hero h1{
-  font-size:5rem;
-
-  line-height:1.05;
-
-  color:#222;
-
-  font-weight:300;
-}
-
-.hero h1 span{
-  color:#ba8666;
-
-  font-style:italic;
-
-  font-family:'Cormorant Garamond', serif;
-}
-
-/* TEXT */
-
-.hero p{
-  margin-top:28px;
-
-  font-size:1.1rem;
-
-  line-height:1.7;
-
-  color:#666;
-
-  max-width:600px;
-}
-
-/* BUTTONS */
-
-.hero-buttons{
-  display:flex;
-
-  gap:18px;
-
-  margin-top:40px;
-}
-
-.primary-btn,
-.secondary-btn{
-
-  padding:16px 30px;
-
-  border-radius:999px;
-
-  font-size:1rem;
-
-  cursor:pointer;
-
-  transition:0.3s;
-}
-
-.primary-btn{
-  border:none;
-
-  background:#222;
-
-  color:white;
-
-  box-shadow:
-  0 10px 25px rgba(0,0,0,0.12);
-}
-
-.primary-btn:hover{
-  transform:translateY(-3px);
-}
-
-.secondary-btn{
-  background:rgba(255,255,255,0.35);
-
-  border:1px solid rgba(255,255,255,0.5);
-
-  backdrop-filter:blur(16px);
-
-  color:#333;
-}
-
-.secondary-btn:hover{
-  transform:translateY(-3px);
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-  .hero{
-    padding:20px;
-  }
-
-  .navbar{
-    flex-direction:column;
-
-    gap:20px;
-
-    border-radius:35px;
-  }
-
-  .nav-links{
-    gap:18px;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-  }
-
-  .hero h1{
-    font-size:3rem;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-
-    width:100%;
-  }
-
-  .primary-btn,
-  .secondary-btn{
-    width:100%;
-  }
-
-  .logo{
-    text-align:center;
-  }
-
-}
-  .fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-</style>
+</body>
+</html>
