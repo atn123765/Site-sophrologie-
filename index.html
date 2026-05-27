@@ -21,24 +21,24 @@ body{
   font-family:Arial, sans-serif;
   background:#f5f1e8;
   scroll-behavior:smooth;
-  overflow-x:hidden;
 }
 
-/* FOND UNIQUE (IMPORTANT) */
-.background{
-  position:fixed;
-  inset:0;
+/* FOND GLOBAL (même partout) */
+.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  padding:30px;
   background:linear-gradient(135deg,#f7f3eb,#ece6db);
-  z-index:-10;
 }
 
 /* BLOBS */
 .blur{
-  position:fixed;
+  position:absolute;
   border-radius:50%;
   filter:blur(90px);
   opacity:0.6;
-  z-index:-5;
+  z-index:0;
 }
 
 .blur1{
@@ -57,13 +57,12 @@ body{
   left:-80px;
 }
 
-/* NAVBAR FIXE (NE CHANGE JAMAIS) */
+/* NAVBAR FIXE */
 .navbar{
   position:fixed;
   top:20px;
   left:50%;
   transform:translateX(-50%);
-
   width:90%;
   max-width:1100px;
 
@@ -74,7 +73,6 @@ body{
   padding:18px 28px;
 
   border-radius:999px;
-
   background:rgba(255,255,255,0.35);
   backdrop-filter:blur(20px);
 
@@ -87,6 +85,7 @@ body{
 .logo{
   font-family:'Cormorant Garamond', serif;
   font-size:1.6rem;
+  font-weight:500;
 }
 
 .logo span{
@@ -96,19 +95,39 @@ body{
   letter-spacing:3px;
 }
 
-/* HERO */
-.hero{
-  min-height:100vh;
+/* NAV LINKS */
+.nav-links{
   display:flex;
+  gap:25px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#555;
+  font-size:0.95rem;
+}
+
+/* BUTTON */
+.nav-btn{
+  border:none;
+  padding:10px 20px;
+  border-radius:999px;
+  background:#222;
+  color:white;
+  cursor:pointer;
+}
+
+/* HERO CONTENT */
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100vh;
+
+  display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding-top:120px;
-}
-
-/* TEXTE PRINCIPAL */
-.hero-content{
-  max-width:800px;
 }
 
 .hero h1{
@@ -125,40 +144,46 @@ body{
 .hero p{
   margin-top:20px;
   color:#666;
+  max-width:600px;
 }
 
-/* BLOCS QUI APPARAISSENT (IMPORTANT) */
-.block{
-  max-width:800px;
-  margin:120px auto;
-  padding:30px;
+/* SECTIONS */
+.section{
+  min-height:100vh;
+  padding:120px 40px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
 
-  background:rgba(255,255,255,0.25);
-  backdrop-filter:blur(18px);
-
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,0.3);
-
+/* FADE IN */
+.fade-in{
   opacity:0;
   transform:translateY(40px);
   transition:0.8s ease;
 }
 
-.block.show{
+.fade-in.show{
   opacity:1;
   transform:translateY(0);
 }
 
-/* ANIMATION SCROLL */
+/* MOBILE */
+@media(max-width:900px){
+  .hero h1{
+    font-size:3rem;
+  }
+
+  .nav-links{
+    display:none;
+  }
+}
+
 </style>
 </head>
 
 <body>
-
-<div class="background"></div>
-
-<div class="blur blur1"></div>
-<div class="blur blur2"></div>
 
 <!-- NAVBAR -->
 <div class="navbar">
@@ -167,47 +192,54 @@ body{
     <span>SOPHROLOGIE</span>
   </div>
 
-  <div>Accueil | À propos | Séances | Contact</div>
+  <div class="nav-links">
+    <a href="#accueil">Accueil</a>
+    <a href="#apropos">À propos</a>
+    <a href="#seances">Séances</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-  <button>Réserver</button>
+  <button class="nav-btn">Réserver</button>
 </div>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
+<section class="hero" id="accueil">
+
+  <div class="hero-content fade-in">
     <h1>Découvrez <br><span>la sophrologie</span></h1>
-    <p>Un accompagnement pour réduire le stress et améliorer le bien-être.</p>
+    <p>Un accompagnement moderne pour retrouver calme, équilibre et confiance.</p>
   </div>
-</div>
 
-<!-- CONTENU QUI APPARAÎT (IMPORTANT) -->
-<div class="block fade">
-  <h2>À propos</h2>
-  <p>La sophrologie est une méthode douce...</p>
-</div>
+  <div class="blur blur1"></div>
+  <div class="blur blur2"></div>
 
-<div class="block fade">
-  <h2>Séances</h2>
-  <p>Des séances individuelles ou en groupe...</p>
-</div>
+</section>
 
-<div class="block fade">
-  <h2>Contact</h2>
-  <p>Prise de rendez-vous simple et rapide...</p>
-</div>
+<!-- SECTIONS -->
+<section class="section fade-in" id="apropos">
+  À propos de la sophrologie
+</section>
+
+<section class="section fade-in" id="seances">
+  Séances et accompagnement
+</section>
+
+<section class="section fade-in" id="contact">
+  Contact et réservation
+</section>
 
 <script>
-const items = document.querySelectorAll('.fade');
+const elements = document.querySelectorAll('.fade-in');
 
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
     }
   });
 });
 
-items.forEach(i=>obs.observe(i));
+elements.forEach(el => observer.observe(el));
 </script>
 
 </body>
