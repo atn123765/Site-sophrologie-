@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- GOOGLE FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<title>Sophrologie</title>
 
 <style>
 
-/* ===== BASE ===== */
-
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -24,44 +27,17 @@ body{
 }
 
 /* HERO */
-
 .hero{
   position:relative;
   min-height:100vh;
-  overflow:hidden;
   padding:30px;
+  overflow:hidden;
   background:linear-gradient(135deg,#f7f3eb,#ece6db);
   display:flex;
   flex-direction:column;
 }
 
-/* BLOBS */
-
-.blur{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(90px);
-  opacity:0.6;
-}
-
-.blur1{
-  width:400px;
-  height:400px;
-  background:#c7d5bf;
-  top:-120px;
-  right:-100px;
-}
-
-.blur2{
-  width:300px;
-  height:300px;
-  background:#d7b79f;
-  bottom:-100px;
-  left:-80px;
-}
-
 /* NAVBAR */
-
 .navbar{
   display:flex;
   justify-content:space-between;
@@ -69,25 +45,23 @@ body{
   padding:18px 28px;
   border-radius:999px;
   background:rgba(255,255,255,0.35);
-  backdrop-filter:blur(22px);
+  backdrop-filter:blur(20px);
   border:1px solid rgba(255,255,255,0.4);
 }
 
 /* LOGO */
-
 .logo{
   font-family:'Cormorant Garamond', serif;
-  font-size:1.8rem;
+  font-size:1.6rem;
 }
 
 .logo span{
   display:block;
-  font-size:0.8rem;
-  opacity:0.7;
+  font-size:0.7rem;
+  letter-spacing:3px;
 }
 
 /* HERO CONTENT */
-
 .hero-content{
   flex:1;
   display:flex;
@@ -98,19 +72,17 @@ body{
 }
 
 /* TITLE */
-
 .hero h1{
-  font-size:5rem;
-  font-weight:300;
+  font-size:4rem;
 }
 
 .hero h1 span{
   color:#ba8666;
   font-style:italic;
+  font-family:'Cormorant Garamond', serif;
 }
 
 /* FADE IN */
-
 .fade-in{
   opacity:0;
   transform:translateY(40px);
@@ -122,6 +94,18 @@ body{
   transform:translateY(0);
 }
 
+/* MOBILE */
+@media(max-width:900px){
+  .hero h1{
+    font-size:2.5rem;
+  }
+
+  .navbar{
+    flex-direction:column;
+    gap:10px;
+  }
+}
+
 </style>
 
 </head>
@@ -130,51 +114,38 @@ body{
 
 <section class="hero">
 
-  <nav class="navbar fade-in">
-
+  <nav class="navbar">
     <div class="logo">
       SYLVIE PONS
       <span>SOPHROLOGIE</span>
     </div>
 
-    <div class="nav-links">
-      <a href="#">Accueil</a>
-      <a href="#">À propos</a>
-      <a href="#">Séances</a>
-      <a href="#">Contact</a>
+    <div>
+      Accueil | À propos | Séances | Contact
     </div>
-
-    <button class="nav-btn">Réserver</button>
-
   </nav>
 
   <div class="hero-content fade-in">
 
     <h1>
-      Découvrez <br>
+      Découvrez<br>
       <span>la sophrologie</span>
     </h1>
 
     <p>
-      La sophrologie vous accompagne à mieux gérer le stress,
-      améliorer votre sommeil et renforcer votre bien-être.
+      La sophrologie aide à réduire le stress et améliorer le bien-être.
     </p>
 
   </div>
 
-  <div class="blur blur1"></div>
-  <div class="blur blur2"></div>
-
 </section>
-
-<!-- JS ICI (IMPORTANT) -->
 
 <script>
 const elements = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
+    if(entry.isIntersecting){
       entry.target.classList.add('show');
     }
   });
