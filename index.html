@@ -11,6 +11,8 @@
 <title>Sophrologie Le Crès</title>
 
 <style>
+
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -94,31 +96,24 @@ body{
   font-size:1.8rem;
   line-height:1;
   font-weight:500;
-  color:#2b2b2b;
 }
 
 .logo span{
   display:block;
   font-size:0.8rem;
   letter-spacing:4px;
-  margin-top:4px;
   opacity:0.7;
 }
 
 .nav-links{
   display:flex;
-  gap:30px;
+  gap:25px;
 }
 
 .nav-links a{
   text-decoration:none;
   color:#555;
   font-size:0.95rem;
-  transition:0.3s;
-}
-
-.nav-links a:hover{
-  color:#000;
 }
 
 .nav-btn{
@@ -128,15 +123,9 @@ body{
   cursor:pointer;
   background:#2b2b2b;
   color:white;
-  transition:0.3s;
 }
 
-.nav-btn:hover{
-  transform:translateY(-2px);
-  background:#3d3d3d;
-}
-
-/* HERO */
+/* HERO CONTENT */
 .hero-content{
   position:relative;
   z-index:2;
@@ -166,9 +155,8 @@ body{
 
 .hero h1{
   font-size:5rem;
-  line-height:1.05;
-  color:#222;
   font-weight:300;
+  line-height:1.05;
 }
 
 .hero h1 span{
@@ -197,176 +185,147 @@ body{
   border-radius:999px;
   font-size:1rem;
   cursor:pointer;
-  transition:0.3s;
 }
 
 .primary-btn{
   border:none;
   background:#222;
   color:white;
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-
-.primary-btn:hover{
-  transform:translateY(-3px);
 }
 
 .secondary-btn{
   background:rgba(255,255,255,0.35);
   border:1px solid rgba(255,255,255,0.5);
-  backdrop-filter:blur(16px);
-  color:#333;
-}
-
-.secondary-btn:hover{
-  transform:translateY(-3px);
 }
 
 /* SECTIONS */
 .section{
-  position:relative;
-  padding:120px 30px;
   min-height:100vh;
+  padding:120px 30px;
   display:flex;
   align-items:center;
 }
 
 .section-inner{
-  width:100%;
   max-width:1100px;
-  margin:0 auto;
+  margin:auto;
+  width:100%;
 }
 
 .section-card{
+  padding:44px;
+  border-radius:28px;
+
   background:rgba(255,255,255,0.25);
   backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,0.32);
-  border-radius:28px;
-  box-shadow:0 12px 34px rgba(0,0,0,0.06);
-  padding:44px;
+
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
 .section-label{
   font-size:0.75rem;
   letter-spacing:0.2em;
-  text-transform:uppercase;
   color:#ba8666;
   margin-bottom:18px;
+  text-transform:uppercase;
 }
 
 .section-title{
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(2.2rem, 4vw, 3.6rem);
-  line-height:1.1;
-  font-weight:400;
+  font-size:3rem;
   margin-bottom:20px;
-  color:#222;
+  font-weight:400;
 }
 
 .section-text{
-  max-width:760px;
-  font-size:1.05rem;
+  color:#5d5b56;
   line-height:1.9;
-  color:#5d5b56;
+  max-width:750px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:18px;
-  margin-top:28px;
+/* MODAL */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(245,241,232,0.35);
+  backdrop-filter:blur(14px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:20px;
 }
 
-.mini-card{
-  padding:22px;
-  border-radius:22px;
+.modal-overlay.open{
+  display:flex;
+}
+
+.booking-panel{
+  width:100%;
+  max-width:700px;
+  padding:36px;
+  border-radius:34px;
+
   background:rgba(255,255,255,0.28);
-  border:1px solid rgba(255,255,255,0.3);
+  backdrop-filter:blur(26px);
+
+  border:1px solid rgba(255,255,255,0.45);
 }
 
-.mini-card h3{
-  font-family:'Cormorant Garamond', serif;
-  font-size:1.45rem;
-  font-weight:500;
-  margin-bottom:10px;
-  color:#222;
+.close-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  border:none;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.4);
+  cursor:pointer;
+  font-size:1.4rem;
 }
 
-.mini-card p{
-  font-size:0.95rem;
-  line-height:1.8;
-  color:#5d5b56;
+/* FORM */
+form{
+  display:grid;
+  gap:14px;
 }
 
-.contact-line{
-  margin-top:22px;
-  font-size:1rem;
-  color:#666;
+input, select, textarea{
+  padding:14px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.4);
+  background:rgba(255,255,255,0.3);
 }
 
-/* FADE IN */
-.fade-in{
-  opacity:0;
-  transform:translateY(40px);
-  transition:0.85s ease;
-}
-
-.fade-in.show{
-  opacity:1;
-  transform:translateY(0);
+.submit-btn{
+  padding:16px;
+  border-radius:999px;
+  border:none;
+  background:#222;
+  color:white;
+  cursor:pointer;
 }
 
 /* MOBILE */
 @media(max-width:900px){
-  .hero{
-    padding:20px;
-  }
-
-  .navbar{
-    width:95%;
-    padding:14px 18px;
+  .hero h1{
+    font-size:3rem;
   }
 
   .nav-links{
     display:none;
   }
-
-  .hero h1{
-    font-size:3rem;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-    width:100%;
-  }
-
-  .primary-btn,
-  .secondary-btn{
-    width:100%;
-  }
-
-  .section{
-    padding:90px 18px;
-    min-height:auto;
-  }
-
-  .section-card{
-    padding:28px;
-    border-radius:24px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
+<!-- NAV -->
+<div class="navbar">
   <div class="logo">
     SYLVIE PONS
     <span>SOPHROLOGIE</span>
@@ -379,23 +338,17 @@ body{
     <a href="#contact">Contact</a>
   </div>
 
-  <button class="nav-btn">Réserver</button>
-</nav>
+  <button class="nav-btn" id="openBooking">Réserver</button>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="accueil">
-  <div class="hero-content fade-in">
+  <div class="hero-content">
     <div class="hero-badge">Sophrologie & Bien-être</div>
 
-    <h1>
-      Découvrez <br>
-      <span>la sophrologie</span>
-    </h1>
+    <h1>Découvrez <br><span>la sophrologie</span></h1>
 
-    <p>
-      La sophrologie vous accompagne à mieux gérer le stress,
-      améliorer votre sommeil et renforcer votre bien-être intérieur.
-    </p>
+    <p>Un accompagnement pour réduire le stress et retrouver l’équilibre intérieur.</p>
 
     <div class="hero-buttons">
       <button class="primary-btn">Commencer</button>
@@ -407,78 +360,77 @@ body{
   <div class="blur blur2"></div>
 </section>
 
-<!-- À PROPOS -->
+<!-- SECTIONS -->
 <section class="section" id="apropos">
-  <div class="section-inner fade-in">
+  <div class="section-inner">
     <div class="section-card">
       <div class="section-label">À propos</div>
-      <div class="section-title">Une approche douce pour retrouver votre équilibre</div>
-      <div class="section-text">
-        La sophrologie est une méthode simple et accessible qui aide à relâcher les tensions,
-        mieux respirer et reprendre confiance. Ici, l’accompagnement se fait à votre rythme,
-        avec une écoute attentive et des exercices concrets pour avancer dans le quotidien.
-      </div>
+      <div class="section-title">Une méthode douce et efficace</div>
+      <div class="section-text">La sophrologie aide à gérer le stress, améliorer le sommeil et renforcer la confiance.</div>
     </div>
   </div>
 </section>
 
-<!-- SÉANCES -->
 <section class="section" id="seances">
-  <div class="section-inner fade-in">
+  <div class="section-inner">
     <div class="section-card">
       <div class="section-label">Séances</div>
-      <div class="section-title">Des séances adaptées à votre besoin</div>
-
-      <div class="grid">
-        <div class="mini-card">
-          <h3>Stress</h3>
-          <p>Apprendre à relâcher la pression et retrouver du calme mental et physique.</p>
-        </div>
-
-        <div class="mini-card">
-          <h3>Sommeil</h3>
-          <p>Améliorer l’endormissement, apaiser le mental et retrouver des nuits plus sereines.</p>
-        </div>
-
-        <div class="mini-card">
-          <h3>Confiance</h3>
-          <p>Renforcer l’estime de soi, préparer un examen ou un événement important.</p>
-        </div>
-      </div>
+      <div class="section-title">Adaptées à chaque personne</div>
+      <div class="section-text">Enfant, ado ou adulte, chaque séance est personnalisée selon vos besoins.</div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="section" id="contact">
-  <div class="section-inner fade-in">
+  <div class="section-inner">
     <div class="section-card">
       <div class="section-label">Contact</div>
-      <div class="section-title">Prenez rendez-vous simplement</div>
-      <div class="section-text">
-        Un premier échange permet de comprendre votre besoin et de voir ensemble la meilleure façon d’avancer.
-        Le plus simple reste un message ou un appel pour fixer une séance.
-      </div>
-      <div class="contact-line">Téléphone : 06 00 00 00 00</div>
-      <div class="contact-line">Email : contact@sylviepons-sophrologie.fr</div>
+      <div class="section-title">Prenez rendez-vous</div>
+      <div class="section-text">Contact simple et rapide pour organiser une séance.</div>
     </div>
   </div>
 </section>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="booking-panel">
+    <button class="close-btn" id="closeBooking">×</button>
+
+    <h2>Réservation</h2>
+
+    <form>
+      <input placeholder="Nom">
+      <input placeholder="Prénom">
+
+      <select>
+        <option>Adulte</option>
+        <option>Ado</option>
+        <option>Enfant</option>
+      </select>
+
+      <input type="date">
+      <input type="time">
+
+      <textarea placeholder="Message"></textarea>
+
+      <button class="submit-btn">Envoyer</button>
+    </form>
+  </div>
+</div>
+
 <script>
-const elements = document.querySelectorAll('.fade-in');
+const openBtn = document.getElementById("openBooking");
+const modal = document.getElementById("bookingModal");
+const closeBtn = document.getElementById("closeBooking");
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-}, {
-  threshold: 0.2
-});
+openBtn.onclick = () => modal.classList.add("open");
+closeBtn.onclick = () => modal.classList.remove("open");
 
-elements.forEach(el => observer.observe(el));
+modal.onclick = (e) => {
+  if(e.target === modal){
+    modal.classList.remove("open");
+  }
+};
 </script>
 
 </body>
