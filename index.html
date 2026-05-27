@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -23,22 +21,21 @@ body{
   scroll-behavior:smooth;
 }
 
-/* FOND GLOBAL (même partout) */
-.hero{
-  position:relative;
-  min-height:100vh;
-  overflow:hidden;
-  padding:30px;
+/* FOND GLOBAL */
+.background{
+  position:fixed;
+  inset:0;
   background:linear-gradient(135deg,#f7f3eb,#ece6db);
+  z-index:-10;
 }
 
 /* BLOBS */
 .blur{
-  position:absolute;
+  position:fixed;
   border-radius:50%;
   filter:blur(90px);
   opacity:0.6;
-  z-index:0;
+  z-index:-5;
 }
 
 .blur1{
@@ -85,105 +82,77 @@ body{
 .logo{
   font-family:'Cormorant Garamond', serif;
   font-size:1.6rem;
-  font-weight:500;
 }
 
 .logo span{
   display:block;
   font-size:0.75rem;
   opacity:0.7;
-  letter-spacing:3px;
 }
 
-/* NAV LINKS */
-.nav-links{
-  display:flex;
-  gap:25px;
-}
-
+/* LINKS */
 .nav-links a{
+  margin:0 12px;
   text-decoration:none;
   color:#555;
-  font-size:0.95rem;
 }
 
-/* BUTTON */
-.nav-btn{
-  border:none;
-  padding:10px 20px;
-  border-radius:999px;
-  background:#222;
-  color:white;
-  cursor:pointer;
-}
-
-/* HERO CONTENT */
-.hero-content{
-  position:relative;
-  z-index:2;
-  height:100vh;
-
+/* HERO */
+.hero{
+  min-height:100vh;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding-top:120px;
 }
 
 .hero h1{
-  font-size:4.5rem;
+  font-size:4rem;
   font-weight:300;
 }
 
 .hero h1 span{
   color:#ba8666;
   font-style:italic;
-  font-family:'Cormorant Garamond', serif;
 }
 
-.hero p{
-  margin-top:20px;
-  color:#666;
-  max-width:600px;
-}
-
-/* SECTIONS */
+/* SECTIONS (IMPORTANT = style identique partout) */
 .section{
   min-height:100vh;
-  padding:120px 40px;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding:80px;
 }
 
-/* FADE IN */
-.fade-in{
-  opacity:0;
-  transform:translateY(40px);
-  transition:0.8s ease;
+.card{
+  max-width:700px;
+  padding:40px;
+
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(18px);
+
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.3);
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
-.fade-in.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .hero h1{
-    font-size:3rem;
-  }
-
-  .nav-links{
-    display:none;
-  }
+/* NAV SMOOTH */
+html{
+  scroll-behavior:smooth;
 }
 
 </style>
 </head>
 
 <body>
+
+<div class="background"></div>
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
 
 <!-- NAVBAR -->
 <div class="navbar">
@@ -199,48 +168,40 @@ body{
     <a href="#contact">Contact</a>
   </div>
 
-  <button class="nav-btn">Réserver</button>
+  <button>Réserver</button>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="accueil">
-
-  <div class="hero-content fade-in">
+  <div>
     <h1>Découvrez <br><span>la sophrologie</span></h1>
-    <p>Un accompagnement moderne pour retrouver calme, équilibre et confiance.</p>
+    <p>Retrouvez calme, équilibre et confiance.</p>
   </div>
-
-  <div class="blur blur1"></div>
-  <div class="blur blur2"></div>
-
 </section>
 
-<!-- SECTIONS -->
-<section class="section fade-in" id="apropos">
-  À propos de la sophrologie
+<!-- À PROPOS -->
+<section class="section" id="apropos">
+  <div class="card">
+    <h2>À propos</h2>
+    <p>La sophrologie est une méthode douce...</p>
+  </div>
 </section>
 
-<section class="section fade-in" id="seances">
-  Séances et accompagnement
+<!-- SÉANCES -->
+<section class="section" id="seances">
+  <div class="card">
+    <h2>Séances</h2>
+    <p>Accompagnement individuel et collectif...</p>
+  </div>
 </section>
 
-<section class="section fade-in" id="contact">
-  Contact et réservation
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Réservation et informations...</p>
+  </div>
 </section>
-
-<script>
-const elements = document.querySelectorAll('.fade-in');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-});
-
-elements.forEach(el => observer.observe(el));
-</script>
 
 </body>
 </html>
