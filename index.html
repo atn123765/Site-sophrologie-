@@ -21,6 +21,11 @@
   box-sizing:border-box;
 }
 
+/* SMOOTH SCROLL */
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:#f5f1e8;
   font-family:Arial, sans-serif;
@@ -178,13 +183,13 @@ body{
 }
 
 /* ===================== */
-/* FADE IN ANIMATION */
+/* SCROLL ANIMATION */
 /* ===================== */
 
 .fade-in{
   opacity:0;
-  transform:translateY(40px);
-  transition:0.8s ease;
+  transform:translateY(60px);
+  transition:all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .fade-in.show{
@@ -225,7 +230,6 @@ body{
 <section class="hero">
 
   <nav class="navbar fade-in">
-
     <div class="logo">
       SYLVIE PONS
       <span>SOPHROLOGIE</span>
@@ -239,7 +243,6 @@ body{
     </div>
 
     <button class="nav-btn">Réserver</button>
-
   </nav>
 
   <div class="hero-content fade-in">
@@ -266,6 +269,7 @@ body{
 
 </section>
 
+<!-- JS SCROLL -->
 <script>
 const elements = document.querySelectorAll('.fade-in');
 
@@ -275,6 +279,8 @@ const observer = new IntersectionObserver((entries) => {
       entry.target.classList.add('show');
     }
   });
+}, {
+  threshold: 0.2
 });
 
 elements.forEach(el => observer.observe(el));
