@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- GOOGLE FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,33 +20,25 @@
   box-sizing:border-box;
 }
 
-/* SCROLL */
 html{
   scroll-behavior:smooth;
 }
 
+/* 🌫️ FOND GLOBAL UNIQUE (IMPORTANT) */
 body{
-  background:#f5f1e8;
   font-family:Arial, sans-serif;
-}
-
-/* HERO */
-.hero{
-  position:relative;
   min-height:100vh;
-  overflow:hidden;
-  padding:30px;
   background:linear-gradient(135deg,#f7f3eb,#ece6db);
-  display:flex;
-  flex-direction:column;
+  overflow-x:hidden;
 }
 
-/* BLOBS */
+/* BLOBS GLOBAUX (FIXES POUR TOUT LE SITE) */
 .blur{
-  position:absolute;
+  position:fixed;
   border-radius:50%;
-  filter:blur(90px);
+  filter:blur(100px);
   opacity:0.6;
+  z-index:0;
 }
 
 .blur1{
@@ -62,20 +53,26 @@ body{
   width:300px;
   height:300px;
   background:#d7b79f;
-  bottom:-100px;
-  left:-80px;
+  bottom:-120px;
+  left:-100px;
 }
 
-/* NAVBAR */
+/* NAVBAR FIXE (MODERNE) */
 .navbar{
-  position:relative;
-  z-index:2;
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:100;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
 
-  padding:18px 28px;
+  width:90%;
+  max-width:1100px;
+
+  padding:16px 24px;
 
   border-radius:999px;
 
@@ -84,28 +81,24 @@ body{
   -webkit-backdrop-filter:blur(22px);
 
   border:1px solid rgba(255,255,255,0.4);
-
-  box-shadow:0 10px 35px rgba(0,0,0,0.06);
 }
 
 /* LOGO */
 .logo{
   font-family:'Cormorant Garamond', serif;
-  font-size:1.8rem;
-  font-weight:500;
+  font-size:1.6rem;
 }
 
 .logo span{
   display:block;
-  font-size:0.8rem;
-  letter-spacing:4px;
-  opacity:0.7;
+  font-size:0.75rem;
+  letter-spacing:3px;
 }
 
-/* NAV LINKS */
+/* LINKS */
 .nav-links{
   display:flex;
-  gap:30px;
+  gap:25px;
 }
 
 .nav-links a{
@@ -116,70 +109,68 @@ body{
 /* BUTTON */
 .nav-btn{
   border:none;
-  padding:12px 22px;
+  padding:10px 18px;
   border-radius:999px;
-  cursor:pointer;
   background:#2b2b2b;
   color:white;
 }
 
-/* HERO CONTENT */
-.hero-content{
-  flex:1;
+/* HERO */
+.hero{
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  max-width:800px;
-  margin:auto;
+  padding-top:120px;
+  position:relative;
+  z-index:1;
 }
 
-/* TITLE */
+/* TITRE */
 .hero h1{
   font-size:5rem;
-  line-height:1.05;
   font-weight:300;
   color:#222;
 }
 
 .hero h1 span{
+  font-family:'Cormorant Garamond', serif;
   color:#ba8666;
   font-style:italic;
-  font-family:'Cormorant Garamond', serif;
 }
 
-/* TEXT */
 .hero p{
-  margin-top:28px;
-  font-size:1.1rem;
-  color:#666;
   max-width:600px;
+  margin-top:25px;
+  color:#666;
 }
 
-/* BUTTONS */
-.hero-buttons{
+/* SECTION STYLE GLASS */
+.section{
+  min-height:100vh;
   display:flex;
-  gap:18px;
-  margin-top:40px;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+
+  padding:80px 20px;
+  position:relative;
+  z-index:1;
 }
 
-.primary-btn,
-.secondary-btn{
-  padding:16px 30px;
-  border-radius:999px;
-  cursor:pointer;
+.section h2{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2.8rem;
+  margin-bottom:20px;
 }
 
-.primary-btn{
-  background:#222;
-  color:white;
-  border:none;
-}
-
-.secondary-btn{
-  background:rgba(255,255,255,0.35);
-  border:1px solid rgba(255,255,255,0.5);
+.section p{
+  max-width:700px;
+  color:#555;
+  line-height:1.8;
 }
 
 /* FADE IN */
@@ -194,33 +185,6 @@ body{
   transform:translateY(0);
 }
 
-/* SECTION 2 (AJOUT SANS CHANGER DESIGN EXISTANT) */
-.section{
-  min-height:100vh;
-  padding:80px 30px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
-  text-align:center;
-}
-
-.section h2{
-  font-size:2.8rem;
-  font-family:'Cormorant Garamond', serif;
-  color:#222;
-  margin-bottom:20px;
-}
-
-.section p{
-  max-width:750px;
-  font-size:1.1rem;
-  color:#555;
-  line-height:1.8;
-}
-
 /* MOBILE */
 @media(max-width:900px){
 
@@ -228,20 +192,12 @@ body{
     font-size:3rem;
   }
 
+  .nav-links{
+    display:none;
+  }
+
   .navbar{
-    flex-direction:column;
-    gap:15px;
-    border-radius:35px;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-    width:100%;
-  }
-
-  .primary-btn,
-  .secondary-btn{
-    width:100%;
+    width:95%;
   }
 }
 
@@ -251,48 +207,41 @@ body{
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
+<!-- BLOBS GLOBAUX -->
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
 
-  <nav class="navbar fade-in">
+<!-- NAVBAR FIXE -->
+<nav class="navbar fade-in">
 
-    <div class="logo">
-      SYLVIE PONS
-      <span>SOPHROLOGIE</span>
-    </div>
-
-    <div class="nav-links">
-      <a href="#">Accueil</a>
-      <a href="#">À propos</a>
-      <a href="#">Séances</a>
-      <a href="#">Contact</a>
-    </div>
-
-    <button class="nav-btn">Réserver</button>
-
-  </nav>
-
-  <div class="hero-content fade-in">
-
-    <h1>
-      Découvrez <br>
-      <span>la sophrologie</span>
-    </h1>
-
-    <p>
-      La sophrologie vous accompagne pour réduire le stress,
-      améliorer le sommeil et retrouver un équilibre intérieur.
-    </p>
-
-    <div class="hero-buttons">
-      <button class="primary-btn">Commencer</button>
-      <button class="secondary-btn">Découvrir</button>
-    </div>
-
+  <div class="logo">
+    SYLVIE PONS
+    <span>SOPHROLOGIE</span>
   </div>
 
-  <div class="blur blur1"></div>
-  <div class="blur blur2"></div>
+  <div class="nav-links">
+    <a href="#">Accueil</a>
+    <a href="#">À propos</a>
+    <a href="#">Séances</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <button class="nav-btn">Réserver</button>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero fade-in">
+
+  <h1>
+    Découvrez <br>
+    <span>la sophrologie</span>
+  </h1>
+
+  <p>
+    La sophrologie vous aide à réduire le stress,
+    améliorer le sommeil et retrouver un équilibre intérieur.
+  </p>
 
 </section>
 
@@ -302,14 +251,26 @@ body{
   <h2>Qu’est-ce que la sophrologie ?</h2>
 
   <p>
-    La sophrologie est une méthode douce basée sur la respiration,
-    la relaxation et la visualisation mentale.
-    Elle aide à réduire le stress et améliorer le bien-être.
+    C’est une méthode douce basée sur la respiration,
+    la détente et la visualisation mentale.
   </p>
 
 </section>
 
-<!-- SCRIPT SCROLL -->
+<!-- SECTION 3 -->
+<section class="section fade-in">
+
+  <h2>Les bienfaits</h2>
+
+  <p>
+    ✔ Stress réduit<br>
+    ✔ Meilleur sommeil<br>
+    ✔ Confiance renforcée<br>
+    ✔ Bien-être global
+  </p>
+
+</section>
+
 <script>
 const elements = document.querySelectorAll('.fade-in');
 
