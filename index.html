@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- GOOGLE FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -20,25 +20,30 @@
   box-sizing:border-box;
 }
 
-html{
+body{
+  background:#f5f1e8;
+  font-family:Arial, sans-serif;
+
+  /* scroll moderne */
   scroll-behavior:smooth;
 }
 
-/* 🌫️ FOND GLOBAL UNIQUE (IMPORTANT) */
-body{
-  font-family:Arial, sans-serif;
+/* HERO */
+.hero{
+  position:relative;
   min-height:100vh;
-  background:linear-gradient(135deg,#f7f3eb,#ece6db);
-  overflow-x:hidden;
+  overflow:hidden;
+  padding:30px;
+
+  background: linear-gradient(135deg,#f7f3eb 0%,#ece6db 100%);
 }
 
-/* BLOBS GLOBAUX (FIXES POUR TOUT LE SITE) */
+/* BLOBS */
 .blur{
-  position:fixed;
+  position:absolute;
   border-radius:50%;
-  filter:blur(100px);
+  filter:blur(90px);
   opacity:0.6;
-  z-index:0;
 }
 
 .blur1{
@@ -53,45 +58,46 @@ body{
   width:300px;
   height:300px;
   background:#d7b79f;
-  bottom:-120px;
-  left:-100px;
+  bottom:-100px;
+  left:-80px;
 }
 
-/* NAVBAR FIXE (MODERNE) */
+/* NAVBAR FIXE */
 .navbar{
   position:fixed;
   top:20px;
   left:50%;
   transform:translateX(-50%);
-  z-index:100;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
   width:90%;
   max-width:1100px;
 
-  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
+  padding:18px 28px;
   border-radius:999px;
 
   background:rgba(255,255,255,0.35);
-  backdrop-filter:blur(22px);
-  -webkit-backdrop-filter:blur(22px);
+  backdrop-filter:blur(20px);
 
   border:1px solid rgba(255,255,255,0.4);
+  box-shadow:0 10px 35px rgba(0,0,0,0.06);
+
+  z-index:1000;
 }
 
 /* LOGO */
 .logo{
   font-family:'Cormorant Garamond', serif;
   font-size:1.6rem;
+  font-weight:500;
 }
 
 .logo span{
   display:block;
   font-size:0.75rem;
+  opacity:0.7;
   letter-spacing:3px;
 }
 
@@ -109,75 +115,80 @@ body{
 /* BUTTON */
 .nav-btn{
   border:none;
-  padding:10px 18px;
+  padding:10px 20px;
   border-radius:999px;
-  background:#2b2b2b;
+  background:#222;
   color:white;
+  cursor:pointer;
 }
 
-/* HERO */
-.hero{
-  min-height:100vh;
+/* HERO CONTENT */
+.hero-content{
+  height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding-top:120px;
-  position:relative;
-  z-index:1;
+  max-width:800px;
+  margin:auto;
 }
 
-/* TITRE */
+/* TITLE */
 .hero h1{
-  font-size:5rem;
+  font-size:4.5rem;
   font-weight:300;
-  color:#222;
 }
 
 .hero h1 span{
-  font-family:'Cormorant Garamond', serif;
   color:#ba8666;
   font-style:italic;
+  font-family:'Cormorant Garamond', serif;
 }
 
+/* TEXT */
 .hero p{
-  max-width:600px;
-  margin-top:25px;
+  margin-top:20px;
   color:#666;
+  max-width:600px;
 }
 
-/* SECTION STYLE GLASS */
+/* BUTTONS */
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  margin-top:30px;
+}
+
+.primary-btn{
+  padding:14px 26px;
+  border:none;
+  border-radius:999px;
+  background:#222;
+  color:white;
+}
+
+.secondary-btn{
+  padding:14px 26px;
+  border-radius:999px;
+  border:1px solid #ccc;
+  background:rgba(255,255,255,0.4);
+}
+
+/* SECTIONS (scroll propre) */
 .section{
   min-height:100vh;
+  padding:100px 40px;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
-  text-align:center;
-
-  padding:80px 20px;
-  position:relative;
-  z-index:1;
-}
-
-.section h2{
-  font-family:'Cormorant Garamond', serif;
-  font-size:2.8rem;
-  margin-bottom:20px;
-}
-
-.section p{
-  max-width:700px;
-  color:#555;
-  line-height:1.8;
 }
 
 /* FADE IN */
 .fade-in{
   opacity:0;
-  transform:translateY(60px);
-  transition:all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform:translateY(40px);
+  transition:0.8s ease;
 }
 
 .fade-in.show{
@@ -187,9 +198,8 @@ body{
 
 /* MOBILE */
 @media(max-width:900px){
-
   .hero h1{
-    font-size:3rem;
+    font-size:2.8rem;
   }
 
   .nav-links{
@@ -202,86 +212,75 @@ body{
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- BLOBS GLOBAUX -->
-<div class="blur blur1"></div>
-<div class="blur blur2"></div>
-
-<!-- NAVBAR FIXE -->
-<nav class="navbar fade-in">
-
+<!-- NAVBAR -->
+<div class="navbar">
   <div class="logo">
     SYLVIE PONS
     <span>SOPHROLOGIE</span>
   </div>
 
   <div class="nav-links">
-    <a href="#">Accueil</a>
-    <a href="#">À propos</a>
-    <a href="#">Séances</a>
-    <a href="#">Contact</a>
+    <a href="#accueil">Accueil</a>
+    <a href="#apropos">À propos</a>
+    <a href="#seances">Séances</a>
+    <a href="#contact">Contact</a>
   </div>
 
   <button class="nav-btn">Réserver</button>
-
-</nav>
+</div>
 
 <!-- HERO -->
-<section class="hero fade-in">
+<section class="hero" id="accueil">
 
-  <h1>
-    Découvrez <br>
-    <span>la sophrologie</span>
-  </h1>
+  <div class="hero-content fade-in">
+    <h1>
+      Découvrez <br>
+      <span>la sophrologie</span>
+    </h1>
 
-  <p>
-    La sophrologie vous aide à réduire le stress,
-    améliorer le sommeil et retrouver un équilibre intérieur.
-  </p>
+    <p>
+      La sophrologie aide à gérer le stress, améliorer le sommeil
+      et retrouver un équilibre intérieur.
+    </p>
 
+    <div class="hero-buttons">
+      <button class="primary-btn">Commencer</button>
+      <button class="secondary-btn">Découvrir</button>
+    </div>
+  </div>
+
+  <div class="blur blur1"></div>
+  <div class="blur blur2"></div>
 </section>
 
 <!-- SECTION 2 -->
-<section class="section fade-in">
-
-  <h2>Qu’est-ce que la sophrologie ?</h2>
-
-  <p>
-    C’est une méthode douce basée sur la respiration,
-    la détente et la visualisation mentale.
-  </p>
-
+<section class="section fade-in" id="apropos">
+  À propos
 </section>
 
 <!-- SECTION 3 -->
-<section class="section fade-in">
+<section class="section fade-in" id="seances">
+  Séances
+</section>
 
-  <h2>Les bienfaits</h2>
-
-  <p>
-    ✔ Stress réduit<br>
-    ✔ Meilleur sommeil<br>
-    ✔ Confiance renforcée<br>
-    ✔ Bien-être global
-  </p>
-
+<!-- SECTION 4 -->
+<section class="section fade-in" id="contact">
+  Contact
 </section>
 
 <script>
 const elements = document.querySelectorAll('.fade-in');
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
       entry.target.classList.add('show');
     }
   });
-}, {
-  threshold: 0.2
 });
 
 elements.forEach(el => observer.observe(el));
