@@ -34,7 +34,7 @@
   <div class="hero-content">
 
     <div class="hero-badge">
-      ✦ Sophrologie & Bien-être
+       Sophrologie & Bien-être
     </div>
 
     <h1>
@@ -59,7 +59,11 @@
   <div class="blur blur1"></div>
   <div class="blur blur2"></div>
 
+<p class="fade-in">
+
 </section>
+
+
 
 <style>
 
@@ -72,6 +76,20 @@
 body{
   background:#f5f1e8;
   font-family:Arial, sans-serif;
+
+  <script>
+const elements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
 }
 
 /* HERO */
@@ -389,6 +407,16 @@ body{
     text-align:center;
   }
 
+}
+  .fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 </style>
