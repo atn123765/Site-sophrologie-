@@ -4,38 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<style>
+<title>Sophrologie Le Crès</title>
 
-/* RESET */
+<style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-body{
-  font-family:Arial, sans-serif;
-  background:#f5f1e8;
+html{
   scroll-behavior:smooth;
 }
 
-/* FOND GLOBAL */
-.background{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(135deg,#f7f3eb,#ece6db);
-  z-index:-10;
+body{
+  background:#f5f1e8;
+  font-family:Arial, sans-serif;
+  color:#2b2b2b;
+  overflow-x:hidden;
+}
+
+/* FOND */
+.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  padding:30px;
+  background:linear-gradient(135deg,#f7f3eb 0%,#ece6db 100%);
+  display:flex;
+  flex-direction:column;
 }
 
 /* BLOBS */
 .blur{
-  position:fixed;
+  position:absolute;
   border-radius:50%;
   filter:blur(90px);
   opacity:0.6;
-  z-index:-5;
+  pointer-events:none;
 }
 
 .blur1{
@@ -54,7 +64,7 @@ body{
   left:-80px;
 }
 
-/* NAVBAR FIXE */
+/* NAVBAR */
 .navbar{
   position:fixed;
   top:20px;
@@ -62,100 +72,301 @@ body{
   transform:translateX(-50%);
   width:90%;
   max-width:1100px;
+  z-index:1000;
 
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
 
   padding:18px 28px;
-
   border-radius:999px;
+
   background:rgba(255,255,255,0.35);
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
 
   border:1px solid rgba(255,255,255,0.4);
   box-shadow:0 10px 35px rgba(0,0,0,0.06);
-
-  z-index:1000;
 }
 
 .logo{
   font-family:'Cormorant Garamond', serif;
-  font-size:1.6rem;
+  font-size:1.8rem;
+  line-height:1;
+  font-weight:500;
+  color:#2b2b2b;
 }
 
 .logo span{
   display:block;
-  font-size:0.75rem;
+  font-size:0.8rem;
+  letter-spacing:4px;
+  margin-top:4px;
   opacity:0.7;
 }
 
-/* LINKS */
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
 .nav-links a{
-  margin:0 12px;
   text-decoration:none;
   color:#555;
+  font-size:0.95rem;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#000;
+}
+
+.nav-btn{
+  border:none;
+  padding:12px 22px;
+  border-radius:999px;
+  cursor:pointer;
+  background:#2b2b2b;
+  color:white;
+  transition:0.3s;
+}
+
+.nav-btn:hover{
+  transform:translateY(-2px);
+  background:#3d3d3d;
 }
 
 /* HERO */
-.hero{
-  min-height:100vh;
+.hero-content{
+  position:relative;
+  z-index:2;
+  flex:1;
+
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding-top:120px;
+
+  max-width:800px;
+  margin:auto;
+  padding-top:90px;
+}
+
+.hero-badge{
+  padding:10px 20px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.4);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.5);
+  color:#666;
+  font-size:0.85rem;
+  margin-bottom:30px;
 }
 
 .hero h1{
-  font-size:4rem;
+  font-size:5rem;
+  line-height:1.05;
+  color:#222;
   font-weight:300;
 }
 
 .hero h1 span{
   color:#ba8666;
   font-style:italic;
+  font-family:'Cormorant Garamond', serif;
 }
 
-/* SECTIONS (IMPORTANT = style identique partout) */
+.hero p{
+  margin-top:28px;
+  font-size:1.1rem;
+  line-height:1.7;
+  color:#666;
+  max-width:620px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:18px;
+  margin-top:40px;
+}
+
+.primary-btn,
+.secondary-btn{
+  padding:16px 30px;
+  border-radius:999px;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.primary-btn{
+  border:none;
+  background:#222;
+  color:white;
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.primary-btn:hover{
+  transform:translateY(-3px);
+}
+
+.secondary-btn{
+  background:rgba(255,255,255,0.35);
+  border:1px solid rgba(255,255,255,0.5);
+  backdrop-filter:blur(16px);
+  color:#333;
+}
+
+.secondary-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* SECTIONS */
 .section{
+  position:relative;
+  padding:120px 30px;
   min-height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
-  text-align:center;
-  padding:80px;
 }
 
-.card{
-  max-width:700px;
-  padding:40px;
+.section-inner{
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+}
 
+.section-card{
   background:rgba(255,255,255,0.25);
   backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.32);
+  border-radius:28px;
+  box-shadow:0 12px 34px rgba(0,0,0,0.06);
+  padding:44px;
+}
 
-  border-radius:20px;
+.section-label{
+  font-size:0.75rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:#ba8666;
+  margin-bottom:18px;
+}
+
+.section-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(2.2rem, 4vw, 3.6rem);
+  line-height:1.1;
+  font-weight:400;
+  margin-bottom:20px;
+  color:#222;
+}
+
+.section-text{
+  max-width:760px;
+  font-size:1.05rem;
+  line-height:1.9;
+  color:#5d5b56;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+  margin-top:28px;
+}
+
+.mini-card{
+  padding:22px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.28);
   border:1px solid rgba(255,255,255,0.3);
-
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* NAV SMOOTH */
-html{
-  scroll-behavior:smooth;
+.mini-card h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.45rem;
+  font-weight:500;
+  margin-bottom:10px;
+  color:#222;
 }
 
+.mini-card p{
+  font-size:0.95rem;
+  line-height:1.8;
+  color:#5d5b56;
+}
+
+.contact-line{
+  margin-top:22px;
+  font-size:1rem;
+  color:#666;
+}
+
+/* FADE IN */
+.fade-in{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.85s ease;
+}
+
+.fade-in.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero{
+    padding:20px;
+  }
+
+  .navbar{
+    width:95%;
+    padding:14px 18px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:3rem;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+    width:100%;
+  }
+
+  .primary-btn,
+  .secondary-btn{
+    width:100%;
+  }
+
+  .section{
+    padding:90px 18px;
+    min-height:auto;
+  }
+
+  .section-card{
+    padding:28px;
+    border-radius:24px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<div class="background"></div>
-<div class="blur blur1"></div>
-<div class="blur blur2"></div>
-
 <!-- NAVBAR -->
-<div class="navbar">
+<nav class="navbar">
   <div class="logo">
     SYLVIE PONS
     <span>SOPHROLOGIE</span>
@@ -168,40 +379,107 @@ html{
     <a href="#contact">Contact</a>
   </div>
 
-  <button>Réserver</button>
-</div>
+  <button class="nav-btn">Réserver</button>
+</nav>
 
 <!-- HERO -->
 <section class="hero" id="accueil">
-  <div>
-    <h1>Découvrez <br><span>la sophrologie</span></h1>
-    <p>Retrouvez calme, équilibre et confiance.</p>
+  <div class="hero-content fade-in">
+    <div class="hero-badge">Sophrologie & Bien-être</div>
+
+    <h1>
+      Découvrez <br>
+      <span>la sophrologie</span>
+    </h1>
+
+    <p>
+      La sophrologie vous accompagne à mieux gérer le stress,
+      améliorer votre sommeil et renforcer votre bien-être intérieur.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="primary-btn">Commencer</button>
+      <button class="secondary-btn">Découvrir</button>
+    </div>
   </div>
+
+  <div class="blur blur1"></div>
+  <div class="blur blur2"></div>
 </section>
 
 <!-- À PROPOS -->
 <section class="section" id="apropos">
-  <div class="card">
-    <h2>À propos</h2>
-    <p>La sophrologie est une méthode douce...</p>
+  <div class="section-inner fade-in">
+    <div class="section-card">
+      <div class="section-label">À propos</div>
+      <div class="section-title">Une approche douce pour retrouver votre équilibre</div>
+      <div class="section-text">
+        La sophrologie est une méthode simple et accessible qui aide à relâcher les tensions,
+        mieux respirer et reprendre confiance. Ici, l’accompagnement se fait à votre rythme,
+        avec une écoute attentive et des exercices concrets pour avancer dans le quotidien.
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- SÉANCES -->
 <section class="section" id="seances">
-  <div class="card">
-    <h2>Séances</h2>
-    <p>Accompagnement individuel et collectif...</p>
+  <div class="section-inner fade-in">
+    <div class="section-card">
+      <div class="section-label">Séances</div>
+      <div class="section-title">Des séances adaptées à votre besoin</div>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h3>Stress</h3>
+          <p>Apprendre à relâcher la pression et retrouver du calme mental et physique.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Sommeil</h3>
+          <p>Améliorer l’endormissement, apaiser le mental et retrouver des nuits plus sereines.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Confiance</h3>
+          <p>Renforcer l’estime de soi, préparer un examen ou un événement important.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="section" id="contact">
-  <div class="card">
-    <h2>Contact</h2>
-    <p>Réservation et informations...</p>
+  <div class="section-inner fade-in">
+    <div class="section-card">
+      <div class="section-label">Contact</div>
+      <div class="section-title">Prenez rendez-vous simplement</div>
+      <div class="section-text">
+        Un premier échange permet de comprendre votre besoin et de voir ensemble la meilleure façon d’avancer.
+        Le plus simple reste un message ou un appel pour fixer une séance.
+      </div>
+      <div class="contact-line">Téléphone : 06 00 00 00 00</div>
+      <div class="contact-line">Email : contact@sylviepons-sophrologie.fr</div>
+    </div>
   </div>
 </section>
+
+<script>
+const elements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
