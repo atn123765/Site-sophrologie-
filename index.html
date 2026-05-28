@@ -123,6 +123,12 @@ body.modal-open{
   color:#000;
 }
 
+.nav-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
 .nav-btn{
   border:none;
   padding:12px 22px;
@@ -131,6 +137,9 @@ body.modal-open{
   background:#2b2b2b;
   color:white;
   transition:0.3s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
 }
 
 .nav-btn:hover{
@@ -403,7 +412,7 @@ body.modal-open{
   transform:translateY(0);
 }
 
-/* BOOKING OVERLAY */
+/* MODAL */
 .modal-overlay{
   position:fixed;
   inset:0;
@@ -420,7 +429,6 @@ body.modal-open{
   display:flex;
 }
 
-/* BOOKING DRAWER */
 .booking-drawer{
   width:min(560px, 100%);
   height:100%;
@@ -487,28 +495,168 @@ body.modal-open{
   box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
-.booking-meta{
+.drawer-tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:18px;
+  position:relative;
+  z-index:1;
+}
+
+.drawer-tab{
+  border:none;
+  padding:12px 18px;
+  border-radius:999px;
+  cursor:pointer;
+  background:rgba(255,255,255,0.28);
+  border:1px solid rgba(255,255,255,0.32);
+  color:#4f4d49;
+  transition:0.25s;
+}
+
+.drawer-tab.active{
+  background:rgba(255,255,255,0.44);
+  color:#222;
+  transform:translateY(-1px);
+}
+
+.drawer-pane.hidden{
+  display:none;
+}
+
+.booking-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.booking-column{
+  display:grid;
+  gap:16px;
+}
+
+.booking-card{
+  position:relative;
+  z-index:1;
+  padding:20px;
+  border-radius:26px;
+  background:rgba(255,255,255,0.24);
+  border:1px solid rgba(255,255,255,0.28);
+  box-shadow:0 10px 24px rgba(0,0,0,0.05);
+}
+
+.account-summary{
+  display:grid;
+  gap:10px;
+}
+
+.account-avatar{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.42);
+  border:1px solid rgba(255,255,255,0.38);
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.8rem;
+  color:#222;
+}
+
+.account-summary-line{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.account-summary-line strong{
+  font-size:1.05rem;
+  color:#222;
+}
+
+.account-summary-line span{
+  font-size:0.9rem;
+  color:#5d5b56;
+}
+
+.secondary-action{
+  border:none;
+  cursor:pointer;
+  border-radius:999px;
+  padding:12px 16px;
+  background:rgba(255,255,255,0.28);
+  border:1px solid rgba(255,255,255,0.32);
+  color:#4f4d49;
+}
+
+.day-strip{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:10px;
+  margin-top:14px;
+}
+
+.day-chip{
+  border:none;
+  padding:14px 12px;
+  border-radius:22px;
+  cursor:pointer;
+  background:rgba(255,255,255,0.25);
+  border:1px solid rgba(255,255,255,0.32);
+  color:#4f4d49;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  transition:0.25s;
+}
+
+.day-chip strong{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.15rem;
+  font-weight:500;
+  color:#222;
+}
+
+.day-chip.active{
+  background:rgba(186,134,102,0.22);
+  border:1px solid rgba(186,134,102,0.45);
+  color:#222;
+  transform:translateY(-1px);
+}
+
+.slot-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:10px;
-  margin:18px 0 22px;
-  position:relative;
-  z-index:1;
+  margin-top:14px;
 }
 
-.meta-pill{
-  padding:12px 14px;
+.slot-chip{
+  border:none;
+  padding:12px 10px;
   border-radius:18px;
-  background:rgba(255,255,255,0.26);
+  cursor:pointer;
+  background:rgba(255,255,255,0.25);
   border:1px solid rgba(255,255,255,0.32);
   color:#4f4d49;
-  font-size:0.9rem;
-  text-align:center;
+  transition:0.25s;
+}
+
+.slot-chip.active{
+  background:rgba(255,255,255,0.46);
+  color:#222;
+  border:1px solid rgba(255,255,255,0.5);
+  transform:scale(1.03);
+}
+
+.summary-line{
+  margin-top:14px;
+  font-size:0.92rem;
+  color:#5d5b56;
 }
 
 .booking-panel{
-  position:relative;
-  z-index:1;
   display:grid;
   gap:16px;
 }
@@ -601,6 +749,30 @@ body.modal-open{
   line-height:1.6;
 }
 
+.owner-dashboard{
+  display:grid;
+  gap:12px;
+}
+
+.owner-list{
+  display:grid;
+  gap:10px;
+  margin-top:10px;
+}
+
+.owner-item{
+  padding:14px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.24);
+  border:1px solid rgba(255,255,255,0.28);
+  color:#4f4d49;
+  line-height:1.6;
+}
+
+.hidden{
+  display:none !important;
+}
+
 /* MOBILE */
 @media(max-width:900px){
   .navbar{
@@ -670,6 +842,10 @@ body.modal-open{
     font-size:2.2rem;
   }
 
+  .booking-layout{
+    grid-template-columns:1fr;
+  }
+
   .booking-meta{
     grid-template-columns:1fr;
   }
@@ -681,6 +857,18 @@ body.modal-open{
   .glass-chips{
     flex-direction:column;
     align-items:flex-start;
+  }
+
+  .day-strip{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .slot-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .booking-top{
+    flex-direction:column;
   }
 }
 </style>
@@ -705,12 +893,14 @@ body.modal-open{
     <a href="#contact">Contact</a>
   </div>
 
-  <button class="nav-btn" id="openBooking">Réserver</button>
+  <div class="nav-actions">
+    <button class="nav-btn" id="openAccount">👤 Compte</button>
+    <button class="nav-btn" id="openBooking">Réserver</button>
+  </div>
 </nav>
 
 <section class="hero" id="accueil">
   <div class="hero-inner">
-
     <div class="hero-main fade-in">
       <div class="hero-badge">Sophrologie & Bien-être</div>
 
@@ -761,12 +951,11 @@ body.modal-open{
         <h3>Pour qui ?</h3>
         <div class="side-list">
           <div>Enfant : apprendre à se calmer et mieux respirer</div>
-          <div>Ado : gérer la pression et la fatigue mentale</div>
+          <div>Adolescent : gérer la pression et la fatigue mentale</div>
           <div>Adulte : retrouver un rythme plus stable</div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -838,10 +1027,10 @@ body.modal-open{
       <div class="section-text">
         Le plus simple est souvent de faire une première demande via le formulaire de réservation.
         Cela permet de préciser le profil, le type de besoin, le créneau souhaité et le message de départ.
-        Ensuite, le rendez-vous pourra être confirmé plus facilement. Rien n’est relié à un service pour l’instant :
-        c’est juste une belle base de prise de contact.
+        Ensuite, le rendez-vous pourra être confirmé plus facilement. L’idée est de rendre le contact clair,
+        rapide et rassurant.
         <br><br>
-        Téléphone, message ou demande directe : l’idée est de rendre le contact clair, rapide et rassurant.
+        Téléphone, message ou demande directe : le site doit rester simple à utiliser et agréable à parcourir.
       </div>
     </div>
   </div>
@@ -854,129 +1043,478 @@ body.modal-open{
         <div class="section-label">Réservation</div>
         <h2>Demande de rendez-vous</h2>
         <p>
-          Remplis ce formulaire pour une demande simple et claire.
-          Rien n’est connecté pour l’instant.
+          Choisis ton compte, ton créneau, puis envoie une demande bien présentée.
         </p>
       </div>
 
       <button class="close-btn" id="closeBooking" aria-label="Fermer">×</button>
     </div>
 
-    <div class="booking-meta">
-      <div class="meta-pill">Enfant</div>
-      <div class="meta-pill">Ado</div>
-      <div class="meta-pill">Adulte</div>
+    <div class="drawer-tabs">
+      <button class="drawer-tab active" data-tab="booking">Réservation</button>
+      <button class="drawer-tab" data-tab="account">Compte</button>
     </div>
 
-    <form class="booking-panel" id="bookingForm">
-      <div class="form-grid">
-        <div class="form-block">
-          <label>Nom</label>
-          <input type="text" placeholder="Dupont">
+    <div id="bookingPane" class="drawer-pane">
+      <div class="booking-layout">
+        <div class="booking-column">
+          <div class="booking-card">
+            <div class="section-label">Compte lié</div>
+            <div class="account-summary" id="accountSummaryCard"></div>
+            <button class="secondary-action" type="button" id="goToAccount">Changer de compte</button>
+          </div>
+
+          <div class="booking-card">
+            <div class="section-label">Agenda</div>
+            <div class="section-title" style="font-size:2rem; margin-bottom:8px;">Choisis un créneau</div>
+            <div class="day-strip" id="dayStrip"></div>
+            <div class="slot-grid" id="slotGrid"></div>
+            <div class="summary-line" id="dateSummary"></div>
+          </div>
+
+          <div class="booking-card">
+            <div class="section-label">Repères</div>
+            <div class="summary-line">
+              Enfant, adolescent ou adulte, chaque séance s’adapte à la situation, au besoin et au rythme de la personne.
+            </div>
+          </div>
         </div>
 
-        <div class="form-block">
-          <label>Prénom</label>
-          <input type="text" placeholder="Marie">
+        <div class="booking-column">
+          <form class="booking-panel" id="bookingForm">
+            <div class="booking-card">
+              <label>Profil</label>
+              <div class="glass-chips">
+                <input type="radio" name="profil" id="profil-enfant" value="enfant">
+                <label for="profil-enfant">Enfant</label>
+
+                <input type="radio" name="profil" id="profil-adolescent" value="adolescent">
+                <label for="profil-adolescent">Adolescent</label>
+
+                <input type="radio" name="profil" id="profil-adulte" value="adulte" checked>
+                <label for="profil-adulte">Adulte</label>
+              </div>
+            </div>
+
+            <div class="booking-card">
+              <label>Type de séance</label>
+              <div class="glass-chips">
+                <input type="radio" name="seance" id="seance-stress" value="stress" checked>
+                <label for="seance-stress">Stress</label>
+
+                <input type="radio" name="seance" id="seance-sommeil" value="sommeil">
+                <label for="seance-sommeil">Sommeil</label>
+
+                <input type="radio" name="seance" id="seance-confiance" value="confiance">
+                <label for="seance-confiance">Confiance</label>
+
+                <input type="radio" name="seance" id="seance-autre" value="autre">
+                <label for="seance-autre">Autre</label>
+              </div>
+            </div>
+
+            <div class="booking-card">
+              <div class="form-grid">
+                <div>
+                  <label style="display:block; margin-bottom:8px; color:#4f4d49;">Nom</label>
+                  <input type="text" id="bookingName" placeholder="Dupont">
+                </div>
+
+                <div>
+                  <label style="display:block; margin-bottom:8px; color:#4f4d49;">Prénom</label>
+                  <input type="text" id="bookingFirstName" placeholder="Marie">
+                </div>
+              </div>
+            </div>
+
+            <div class="booking-card">
+              <div class="form-grid">
+                <div>
+                  <label style="display:block; margin-bottom:8px; color:#4f4d49;">Email</label>
+                  <input type="email" id="bookingEmail" placeholder="marie@email.com">
+                </div>
+
+                <div>
+                  <label style="display:block; margin-bottom:8px; color:#4f4d49;">Téléphone</label>
+                  <input type="tel" id="bookingPhone" placeholder="06 00 00 00 00">
+                </div>
+              </div>
+            </div>
+
+            <div class="booking-card">
+              <label>Message</label>
+              <textarea id="bookingMessage" rows="5" placeholder="Explique rapidement le besoin, l’âge de la personne et la raison du rendez-vous..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Envoyer la demande</button>
+
+            <div class="booking-note">
+              La réservation est enregistrée localement dans le navigateur pour l’instant.
+            </div>
+          </form>
+
+          <div class="booking-card owner-dashboard hidden" id="ownerDashboard">
+            <div class="section-label">Propriétaire</div>
+            <div class="section-title" style="font-size:2rem; margin-bottom:10px;">Demandes enregistrées</div>
+            <div class="owner-list" id="ownerList"></div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="form-block">
-        <label>Profil</label>
-        <div class="glass-chips">
-          <input type="radio" name="profil" id="profil-enfant" value="enfant">
-          <label for="profil-enfant">Enfant</label>
+    <div id="accountPane" class="drawer-pane hidden">
+      <div class="booking-layout">
+        <div class="booking-column">
+          <div class="booking-card">
+            <div class="section-label">Compte client</div>
+            <div class="section-title" style="font-size:2rem;">Créer ou se connecter</div>
+            <div class="booking-note" style="margin-top:0;">
+              Si l’adresse existe déjà, il suffit de remettre le même mot de passe.
+            </div>
 
-          <input type="radio" name="profil" id="profil-ado" value="ado">
-          <label for="profil-ado">Ado</label>
+            <form id="clientAccountForm" class="booking-panel" style="margin-top:18px;">
+              <div class="form-grid">
+                <div>
+                  <label style="display:block; margin-bottom:8px; color:#4f4d49;">Nom</label>
+                  <input type="text" id="clientName" placeholder="Dupont">
+                </div>
 
-          <input type="radio" name="profil" id="profil-adulte" value="adulte" checked>
-          <label for="profil-adulte">Adulte</label>
+                <div>
+                  <label style="display:block; margin-bottom:8px; color:#4f4d49;">Prénom</label>
+                  <input type="text" id="clientFirstName" placeholder="Marie">
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label style="display:block; margin-bottom:8px; color:#4f4d49;">Email</label>
+                  <input type="email" id="clientEmail" placeholder="marie@email.com">
+                </div>
+
+                <div>
+                  <label style="display:block; margin-bottom:8px; color:#4f4d49;">Mot de passe</label>
+                  <input type="password" id="clientPassword" placeholder="Choisis un mot de passe">
+                </div>
+              </div>
+
+              <button type="submit" class="submit-btn">Valider le compte client</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="booking-column">
+          <div class="booking-card">
+            <div class="section-label">Propriétaire</div>
+            <div class="section-title" style="font-size:2rem;">Accès admin</div>
+            <div class="section-text" style="max-width:none;">
+              Accès réservé au suivi des demandes, à la vue des réservations et à la gestion du dossier.
+            </div>
+
+            <form id="ownerLoginForm" class="booking-panel" style="margin-top:18px;">
+              <div>
+                <label style="display:block; margin-bottom:8px; color:#4f4d49;">Mot de passe admin</label>
+                <input type="password" id="ownerPassword" placeholder="LUNE-84-SEREIN">
+              </div>
+
+              <button type="submit" class="submit-btn">Entrer en mode propriétaire</button>
+            </form>
+
+            <div class="booking-note">
+              Mot admin généré : <strong>LUNE-84-SEREIN</strong>
+            </div>
+          </div>
+
+          <div class="booking-card">
+            <div class="section-label">Compte actif</div>
+            <div class="account-summary" id="accountSummaryCardAccount"></div>
+            <button class="secondary-action" type="button" id="logoutBtn">Se déconnecter</button>
+          </div>
         </div>
       </div>
-
-      <div class="form-block">
-        <label>Type de séance</label>
-        <div class="glass-chips">
-          <input type="radio" name="seance" id="seance-stress" value="stress">
-          <label for="seance-stress">Stress</label>
-
-          <input type="radio" name="seance" id="seance-sommeil" value="sommeil">
-          <label for="seance-sommeil">Sommeil</label>
-
-          <input type="radio" name="seance" id="seance-confiance" value="confiance">
-          <label for="seance-confiance">Confiance</label>
-
-          <input type="radio" name="seance" id="seance-autre" value="autre">
-          <label for="seance-autre">Autre</label>
-        </div>
-      </div>
-
-      <div class="form-grid">
-        <div class="form-block">
-          <label>Date souhaitée</label>
-          <input type="date">
-        </div>
-
-        <div class="form-block">
-          <label>Heure souhaitée</label>
-          <input type="time">
-        </div>
-      </div>
-
-      <div class="form-block">
-        <label>Message</label>
-        <textarea rows="5" placeholder="Explique rapidement le besoin, l’âge de la personne et la raison du rendez-vous..."></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn">Envoyer la demande</button>
-
-      <div class="booking-note">
-        Ce formulaire n’est pas encore connecté à un service. Il sert pour la présentation et la mise en page.
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 
 <script>
-const fadeItems = document.querySelectorAll('.fade-in');
+const ADMIN_PASSWORD = 'LUNE-84-SEREIN';
+const USERS_KEY = 'sylvie-users';
+const CURRENT_KEY = 'sylvie-current-user';
+const RES_KEY = 'sylvie-reservations';
 
-const fadeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
+const availableSlots = ['09:00', '09:45', '10:30', '11:15', '14:00', '14:45', '15:30', '16:15', '17:00'];
+
+const state = {
+  activeTab: 'booking',
+  selectedDate: null,
+  selectedSlot: null
+};
+
+function loadUsers(){
+  return JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+}
+
+function saveUsers(users){
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+function loadCurrentUser(){
+  return JSON.parse(localStorage.getItem(CURRENT_KEY) || 'null');
+}
+
+function saveCurrentUser(user){
+  localStorage.setItem(CURRENT_KEY, JSON.stringify(user));
+}
+
+function clearCurrentUser(){
+  localStorage.removeItem(CURRENT_KEY);
+}
+
+function loadReservations(){
+  return JSON.parse(localStorage.getItem(RES_KEY) || '[]');
+}
+
+function saveReservations(reservations){
+  localStorage.setItem(RES_KEY, JSON.stringify(reservations));
+}
+
+function capitalize(text){
+  if(!text) return '';
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function formatDate(date){
+  return capitalize(date.toLocaleDateString('fr-FR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long'
+  }));
+}
+
+function formatChipDate(date){
+  return date.toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'short'
   });
-}, {
-  threshold: 0.2
-});
+}
 
-fadeItems.forEach(el => fadeObserver.observe(el));
+function setTab(tab){
+  state.activeTab = tab;
 
-const bookingModal = document.getElementById('bookingModal');
-const openBooking = document.getElementById('openBooking');
-const heroBooking = document.getElementById('heroBooking');
-const closeBooking = document.getElementById('closeBooking');
-const bookingForm = document.getElementById('bookingForm');
+  document.querySelectorAll('.drawer-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
 
-function openModal(){
-  bookingModal.classList.add('open');
+  document.getElementById('bookingPane').classList.toggle('hidden', tab !== 'booking');
+  document.getElementById('accountPane').classList.toggle('hidden', tab !== 'account');
+}
+
+function openModal(tab = 'booking'){
+  document.getElementById('bookingModal').classList.add('open');
   document.body.classList.add('modal-open');
-  bookingModal.setAttribute('aria-hidden', 'false');
+  document.getElementById('bookingModal').setAttribute('aria-hidden', 'false');
+  setTab(tab);
+  renderAccountState();
+  renderOwnerDashboard();
+  syncBookingFields();
 }
 
 function closeModal(){
-  bookingModal.classList.remove('open');
+  document.getElementById('bookingModal').classList.remove('open');
   document.body.classList.remove('modal-open');
-  bookingModal.setAttribute('aria-hidden', 'true');
+  document.getElementById('bookingModal').setAttribute('aria-hidden', 'true');
 }
 
-openBooking.addEventListener('click', openModal);
-heroBooking.addEventListener('click', openModal);
-closeBooking.addEventListener('click', closeModal);
+function renderDays(){
+  const dayStrip = document.getElementById('dayStrip');
+  dayStrip.innerHTML = '';
 
-bookingModal.addEventListener('click', (e) => {
-  if(e.target === bookingModal){
+  const today = new Date();
+  const days = [];
+
+  for(let i = 0; i < 7; i++){
+    const date = new Date();
+    date.setDate(today.getDate() + i);
+    days.push(date);
+  }
+
+  days.forEach((date, index) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'day-chip' + (index === 0 ? ' active' : '');
+
+    const label = index === 0 ? 'Aujourd’hui' : index === 1 ? 'Demain' : capitalize(date.toLocaleDateString('fr-FR', { weekday: 'short' }));
+
+    btn.innerHTML = `<span>${label}</span><strong>${formatChipDate(date)}</strong>`;
+
+    btn.addEventListener('click', () => {
+      state.selectedDate = date;
+      state.selectedSlot = availableSlots[0];
+      [...dayStrip.querySelectorAll('.day-chip')].forEach(x => x.classList.remove('active'));
+      btn.classList.add('active');
+      renderSlots();
+      updateSummary();
+    });
+
+    dayStrip.appendChild(btn);
+
+    if(index === 0){
+      state.selectedDate = date;
+    }
+  });
+
+  state.selectedSlot = availableSlots[0];
+  renderSlots();
+  updateSummary();
+}
+
+function renderSlots(){
+  const slotGrid = document.getElementById('slotGrid');
+  slotGrid.innerHTML = '';
+
+  availableSlots.forEach((slot, index) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'slot-chip' + (state.selectedSlot === slot || (!state.selectedSlot && index === 0) ? ' active' : '');
+    btn.textContent = slot;
+
+    btn.addEventListener('click', () => {
+      state.selectedSlot = slot;
+      [...slotGrid.querySelectorAll('.slot-chip')].forEach(x => x.classList.remove('active'));
+      btn.classList.add('active');
+      updateSummary();
+    });
+
+    slotGrid.appendChild(btn);
+  });
+}
+
+function updateSummary(){
+  const el = document.getElementById('dateSummary');
+  if(!state.selectedDate || !state.selectedSlot){
+    el.textContent = 'Choisis un jour puis un horaire.';
+    return;
+  }
+  el.textContent = `${formatDate(state.selectedDate)} · ${state.selectedSlot}`;
+}
+
+function renderAccountState(){
+  const current = loadCurrentUser();
+
+  const summaryBooking = document.getElementById('accountSummaryCard');
+  const summaryAccount = document.getElementById('accountSummaryCardAccount');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  if(current){
+    const initial = (current.name || 'C').trim().charAt(0).toUpperCase();
+    const roleLabel = current.role === 'owner' ? 'Propriétaire' : 'Client';
+
+    const html = `
+      <div style="display:flex; gap:14px; align-items:center;">
+        <div class="account-avatar">${initial}</div>
+        <div class="account-summary-line">
+          <strong>${current.name || 'Compte'}</strong>
+          <span>${roleLabel} · ${current.email || 'aucun email'}</span>
+        </div>
+      </div>
+    `;
+
+    summaryBooking.innerHTML = html;
+    summaryAccount.innerHTML = html;
+    logoutBtn.style.display = 'inline-flex';
+  } else {
+    const html = `
+      <div class="account-summary-line">
+        <strong>Aucun compte connecté</strong>
+        <span>Connecte-toi pour utiliser la réservation avec ton profil.</span>
+      </div>
+    `;
+
+    summaryBooking.innerHTML = html;
+    summaryAccount.innerHTML = html;
+    logoutBtn.style.display = 'none';
+  }
+
+  const ownerDashboard = document.getElementById('ownerDashboard');
+  if(current && current.role === 'owner'){
+    ownerDashboard.classList.remove('hidden');
+  } else {
+    ownerDashboard.classList.add('hidden');
+  }
+}
+
+function syncBookingFields(){
+  const current = loadCurrentUser();
+
+  const bookingName = document.getElementById('bookingName');
+  const bookingFirstName = document.getElementById('bookingFirstName');
+  const bookingEmail = document.getElementById('bookingEmail');
+
+  if(current){
+    const parts = (current.fullName || current.name || '').split(' ');
+    bookingName.value = parts[0] || current.name || '';
+    bookingFirstName.value = parts.slice(1).join(' ') || '';
+    bookingEmail.value = current.email || '';
+  }
+}
+
+function renderOwnerDashboard(){
+  const current = loadCurrentUser();
+  const ownerDashboard = document.getElementById('ownerDashboard');
+  const ownerList = document.getElementById('ownerList');
+
+  if(!current || current.role !== 'owner'){
+    ownerDashboard.classList.add('hidden');
+    return;
+  }
+
+  const reservations = loadReservations().slice().reverse();
+
+  if(reservations.length === 0){
+    ownerList.innerHTML = `<div class="owner-item">Aucune demande pour le moment.</div>`;
+    return;
+  }
+
+  ownerList.innerHTML = reservations.slice(0, 10).map(item => {
+    const dateLabel = item.date || 'Date non choisie';
+    const timeLabel = item.slot || 'Heure non choisie';
+    const profile = item.profile || 'Profil';
+    const session = item.session || 'Séance';
+    const name = item.name || 'Sans nom';
+
+    return `
+      <div class="owner-item">
+        <strong>${name}</strong><br>
+        ${dateLabel} · ${timeLabel}<br>
+        ${profile} · ${session}<br>
+        <span>${item.email || ''}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function openBookingTab(){
+  openModal('booking');
+}
+
+function openAccountTab(){
+  openModal('account');
+}
+
+document.querySelectorAll('.drawer-tab').forEach(btn => {
+  btn.addEventListener('click', () => setTab(btn.dataset.tab));
+});
+
+document.getElementById('openBooking').addEventListener('click', openBookingTab);
+document.getElementById('heroBooking').addEventListener('click', openBookingTab);
+document.getElementById('openAccount').addEventListener('click', openAccountTab);
+document.getElementById('closeBooking').addEventListener('click', closeModal);
+
+document.getElementById('goToAccount').addEventListener('click', () => {
+  setTab('account');
+});
+
+document.getElementById('bookingModal').addEventListener('click', (e) => {
+  if(e.target === document.getElementById('bookingModal')){
     closeModal();
   }
 });
@@ -987,11 +1525,142 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-bookingForm.addEventListener('submit', (e) => {
+document.getElementById('clientAccountForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  alert("Demande visuelle envoyée. Rien n'est connecté pour l'instant.");
+
+  const name = document.getElementById('clientName').value.trim();
+  const firstName = document.getElementById('clientFirstName').value.trim();
+  const email = document.getElementById('clientEmail').value.trim().toLowerCase();
+  const password = document.getElementById('clientPassword').value.trim();
+
+  if(!name || !firstName || !email || !password){
+    alert('Remplis les champs du compte client.');
+    return;
+  }
+
+  const fullName = `${name} ${firstName}`.trim();
+  const users = loadUsers();
+  const existing = users.find(user => user.email === email);
+
+  if(existing){
+    if(existing.password !== password){
+      alert('Mot de passe incorrect.');
+      return;
+    }
+    saveCurrentUser(existing);
+  } else {
+    const newUser = {
+      role: 'client',
+      name,
+      firstName,
+      fullName,
+      email,
+      password
+    };
+    users.push(newUser);
+    saveUsers(users);
+    saveCurrentUser(newUser);
+  }
+
+  renderAccountState();
+  syncBookingFields();
+  renderOwnerDashboard();
+  setTab('booking');
+  alert('Compte client actif.');
+});
+
+document.getElementById('ownerLoginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const password = document.getElementById('ownerPassword').value.trim();
+
+  if(password !== ADMIN_PASSWORD){
+    alert('Mot de passe admin incorrect.');
+    return;
+  }
+
+  const owner = {
+    role: 'owner',
+    name: 'Propriétaire',
+    firstName: '',
+    fullName: 'Propriétaire',
+    email: 'admin@sylviepons.fr'
+  };
+
+  saveCurrentUser(owner);
+  renderAccountState();
+  syncBookingFields();
+  renderOwnerDashboard();
+  setTab('booking');
+  alert('Mode propriétaire activé.');
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  clearCurrentUser();
+  renderAccountState();
+  syncBookingFields();
+  renderOwnerDashboard();
+  alert('Déconnexion effectuée.');
+});
+
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const current = loadCurrentUser();
+  if(!current){
+    alert('Connecte-toi d’abord avec un compte client ou le mode propriétaire.');
+    setTab('account');
+    return;
+  }
+
+  if(!state.selectedDate || !state.selectedSlot){
+    alert('Choisis une date et une heure.');
+    return;
+  }
+
+  const profile = document.querySelector('input[name="profil"]:checked')?.value || 'adulte';
+  const session = document.querySelector('input[name="seance"]:checked')?.value || 'stress';
+
+  const booking = {
+    id: Date.now(),
+    accountRole: current.role,
+    name: `${document.getElementById('bookingName').value.trim()} ${document.getElementById('bookingFirstName').value.trim()}`.trim(),
+    email: document.getElementById('bookingEmail').value.trim(),
+    phone: document.getElementById('bookingPhone').value.trim(),
+    profile,
+    session,
+    date: formatDate(state.selectedDate),
+    slot: state.selectedSlot,
+    message: document.getElementById('bookingMessage').value.trim()
+  };
+
+  const reservations = loadReservations();
+  reservations.push(booking);
+  saveReservations(reservations);
+
+  renderOwnerDashboard();
+  alert('Demande ajoutée dans le navigateur.');
   closeModal();
 });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  observer.observe(el);
+});
+
+renderDays();
+renderAccountState();
+syncBookingFields();
+renderOwnerDashboard();
 </script>
 
 </body>
