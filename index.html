@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 
 <head>
@@ -18,8 +17,6 @@
 
 <style>
 
-/* RESET */
-
 *{
   margin:0;
   padding:0;
@@ -36,12 +33,14 @@ body{
   overflow-x:hidden;
 }
 
-/* BACKGROUND GLOBAL */
+/* HERO */
 
-.background{
-  position:fixed;
-  inset:0;
-  z-index:-2;
+.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+
+  padding:30px;
 
   background:
   linear-gradient(
@@ -49,21 +48,24 @@ body{
     #f7f3eb 0%,
     #ece6db 100%
   );
+
+  display:flex;
+  flex-direction:column;
 }
 
 /* BLOBS */
 
 .blur{
-  position:fixed;
+  position:absolute;
   border-radius:50%;
   filter:blur(90px);
   opacity:0.6;
-  z-index:-1;
 }
 
 .blur1{
-  width:420px;
-  height:420px;
+  width:400px;
+  height:400px;
+
   background:#c7d5bf;
 
   top:-120px;
@@ -71,30 +73,27 @@ body{
 }
 
 .blur2{
-  width:320px;
-  height:320px;
+  width:300px;
+  height:300px;
+
   background:#d7b79f;
 
   bottom:-100px;
   left:-80px;
 }
 
-/* HERO */
-
-.hero{
-  min-height:100vh;
-
-  padding:30px;
-
-  display:flex;
-  flex-direction:column;
-}
-
 /* NAVBAR */
 
 .navbar{
-  position:sticky;
+  position:fixed;
+
   top:20px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:calc(100% - 60px);
+  max-width:1400px;
 
   z-index:999;
 
@@ -115,8 +114,6 @@ body{
 
   box-shadow:
   0 10px 35px rgba(0,0,0,0.06);
-
-  margin-bottom:40px;
 }
 
 /* LOGO */
@@ -125,10 +122,11 @@ body{
   font-family:'Cormorant Garamond', serif;
 
   font-size:1.8rem;
-
   line-height:1;
 
   font-weight:500;
+
+  letter-spacing:1px;
 
   color:#2b2b2b;
 }
@@ -185,7 +183,7 @@ body{
 
   cursor:pointer;
 
-  background:#222;
+  background:#2b2b2b;
   color:white;
 
   transition:0.3s;
@@ -193,6 +191,8 @@ body{
 
 .nav-btn:hover{
   transform:translateY(-2px);
+
+  background:#3d3d3d;
 }
 
 /* ACCOUNT */
@@ -229,6 +229,9 @@ body{
 /* HERO CONTENT */
 
 .hero-content{
+  position:relative;
+  z-index:2;
+
   flex:1;
 
   display:flex;
@@ -238,7 +241,7 @@ body{
 
   text-align:center;
 
-  max-width:850px;
+  max-width:800px;
 
   margin:auto;
 }
@@ -290,11 +293,11 @@ body{
 
   font-size:1.1rem;
 
-  line-height:1.8;
+  line-height:1.7;
 
   color:#666;
 
-  max-width:650px;
+  max-width:600px;
 }
 
 /* BUTTONS */
@@ -332,6 +335,10 @@ body{
   0 10px 25px rgba(0,0,0,0.12);
 }
 
+.primary-btn:hover{
+  transform:translateY(-3px);
+}
+
 .secondary-btn{
   background:rgba(255,255,255,0.35);
 
@@ -342,180 +349,314 @@ body{
   color:#333;
 }
 
-.primary-btn:hover,
 .secondary-btn:hover{
   transform:translateY(-3px);
 }
 
 /* SECTIONS */
 
-.info-section{
-  width:100%;
-  max-width:1200px;
+.section{
+  position:relative;
 
-  margin:120px auto;
+  padding:140px 30px;
 
-  padding:0 30px;
+  background:
+  linear-gradient(
+    135deg,
+    #f7f3eb 0%,
+    #ece6db 100%
+  );
 }
 
-/* CARDS */
+.section-container{
+  max-width:1200px;
+  margin:auto;
+}
 
-.glass-card{
-  background:rgba(255,255,255,0.28);
+.section-card{
+  padding:50px;
 
-  backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
+  border-radius:40px;
+
+  background:rgba(255,255,255,0.25);
+
+  backdrop-filter:blur(20px);
 
   border:1px solid rgba(255,255,255,0.4);
 
-  border-radius:35px;
-
-  padding:50px;
-
   box-shadow:
-  0 10px 40px rgba(0,0,0,0.05);
+  0 10px 35px rgba(0,0,0,0.05);
 }
 
-/* TITLES */
+.section-tag{
+  display:inline-block;
 
-.section-title{
-  font-family:'Cormorant Garamond', serif;
+  padding:10px 18px;
 
+  border-radius:999px;
+
+  background:rgba(255,255,255,0.4);
+
+  border:1px solid rgba(255,255,255,0.4);
+
+  color:#666;
+
+  margin-bottom:25px;
+}
+
+.section h2{
   font-size:4rem;
+
+  font-weight:300;
 
   color:#222;
 
-  margin-bottom:20px;
+  line-height:1.1;
 }
 
-.section-text{
+.section h2 span{
+  color:#ba8666;
+
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+}
+
+.section p{
+  margin-top:25px;
+
   color:#666;
 
   line-height:1.9;
 
-  font-size:1.05rem;
-
   max-width:850px;
+
+  font-size:1.08rem;
 }
 
-/* RESERVATION PANEL */
+/* FADE */
 
-.booking-panel{
-  margin-top:40px;
+.fade-in{
+  opacity:0;
 
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  transform:translateY(40px);
 
-  gap:20px;
+  transition:all 1s ease;
 }
 
-/* INPUTS */
+.fade-in.show{
+  opacity:1;
 
-.glass-input{
-  padding:18px 22px;
+  transform:translateY(0);
+}
 
-  border-radius:20px;
+/* MODAL */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+
+  display:none;
+
+  justify-content:flex-end;
+
+  background:rgba(245,241,232,0.15);
+
+  backdrop-filter:blur(12px);
+
+  z-index:9999;
+}
+
+.modal-overlay.open{
+  display:flex;
+}
+
+.booking-drawer{
+  width:580px;
+  max-width:100%;
+
+  height:100vh;
+
+  overflow:auto;
+
+  padding:30px;
+
+  background:rgba(255,255,255,0.22);
+
+  backdrop-filter:blur(30px);
+
+  border-left:1px solid rgba(255,255,255,0.35);
+
+  box-shadow:-20px 0 50px rgba(0,0,0,0.08);
+}
+
+.close-btn{
+  width:45px;
+  height:45px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,0.35);
+
+  cursor:pointer;
+
+  font-size:1.5rem;
+
+  margin-bottom:20px;
+}
+
+.booking-header h2{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:3rem;
+
+  font-weight:500;
+
+  color:#222;
+
+  margin-top:10px;
+}
+
+.booking-header p{
+  margin-top:10px;
+
+  line-height:1.7;
+
+  color:#666;
+}
+
+.booking-tag{
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,0.3);
 
   border:1px solid rgba(255,255,255,0.4);
 
-  background:rgba(255,255,255,0.25);
+  font-size:0.85rem;
+}
 
-  backdrop-filter:blur(16px);
+.booking-grid{
+  display:grid;
 
-  color:#222;
+  gap:20px;
+
+  margin-top:30px;
+}
+
+.glass-card{
+  padding:22px;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,0.2);
+
+  border:1px solid rgba(255,255,255,0.3);
+
+  backdrop-filter:blur(20px);
+}
+
+.glass-card h3{
+  margin-bottom:15px;
+}
+
+.day-list,
+.slot-list,
+.chip-group{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:15px;
+}
+
+.day,
+.slot,
+.chip{
+  padding:12px 16px;
+
+  border-radius:18px;
+
+  border:1px solid rgba(255,255,255,0.35);
+
+  background:rgba(255,255,255,0.28);
+
+  cursor:pointer;
+}
+
+.chip-group input{
+  display:none;
+}
+
+.chip-group input:checked + .chip{
+  background:rgba(186,134,102,0.25);
+}
+
+.glass-input{
+  width:100%;
+
+  padding:16px 18px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.28);
+
+  border:1px solid rgba(255,255,255,0.35);
 
   outline:none;
 
   font-size:1rem;
 }
 
-/* CALENDAR */
+.form-grid{
+  display:grid;
 
-.calendar-box{
-  margin-top:25px;
+  grid-template-columns:1fr 1fr;
 
-  padding:25px;
-
-  border-radius:30px;
-
-  background:rgba(255,255,255,0.22);
-
-  backdrop-filter:blur(18px);
-
-  border:1px solid rgba(255,255,255,0.35);
+  gap:12px;
 }
 
-.calendar-title{
-  font-size:1.2rem;
+.textarea{
+  min-height:120px;
 
-  color:#222;
-
-  margin-bottom:20px;
+  resize:none;
 }
 
-/* DAYS */
+.submit-btn{
+  width:100%;
 
-.days{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
+  padding:18px;
 
-.day{
-  padding:14px 18px;
+  border:none;
 
-  border-radius:18px;
+  border-radius:999px;
 
-  background:rgba(255,255,255,0.35);
+  background:#222;
 
-  border:1px solid rgba(255,255,255,0.35);
+  color:white;
+
+  font-size:1rem;
 
   cursor:pointer;
-
-  transition:0.3s;
-}
-
-.day:hover{
-  transform:translateY(-3px);
-
-  background:white;
-}
-
-/* FADE IN */
-
-.fade-in{
-  opacity:0;
-  transform:translateY(50px);
-  transition:all 1s ease;
-}
-
-.fade-in.show{
-  opacity:1;
-  transform:translateY(0);
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
 
-  .hero{
-    padding:20px;
-  }
-
   .navbar{
-    flex-direction:column;
+    width:calc(100% - 20px);
 
-    gap:20px;
-
-    border-radius:35px;
+    padding:18px;
   }
 
   .nav-links{
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:18px;
+    display:none;
   }
 
   .hero h1{
@@ -533,16 +674,20 @@ body{
     width:100%;
   }
 
-  .booking-panel{
+  .section h2{
+    font-size:2.5rem;
+  }
+
+  .section-card{
+    padding:30px;
+  }
+
+  .booking-drawer{
+    width:100%;
+  }
+
+  .form-grid{
     grid-template-columns:1fr;
-  }
-
-  .section-title{
-    font-size:3rem;
-  }
-
-  .glass-card{
-    padding:35px;
   }
 
 }
@@ -552,13 +697,6 @@ body{
 </head>
 
 <body>
-
-<!-- BACKGROUND -->
-
-<div class="background"></div>
-
-<div class="blur blur1"></div>
-<div class="blur blur2"></div>
 
 <!-- HERO -->
 
@@ -576,13 +714,12 @@ body{
     <div class="nav-links">
       <a href="#about">À propos</a>
       <a href="#sessions">Séances</a>
-      <a href="#reservation">Réservation</a>
       <a href="#contact">Contact</a>
     </div>
 
     <div class="nav-actions">
 
-      <button class="nav-btn">
+      <button class="nav-btn" id="openBooking">
         Réserver
       </button>
 
@@ -594,7 +731,7 @@ body{
 
   </nav>
 
-  <!-- HERO CONTENT -->
+  <!-- CONTENT -->
 
   <div class="hero-content fade-in">
 
@@ -608,15 +745,13 @@ body{
     </h1>
 
     <p>
-      La sophrologie vous accompagne au quotidien pour retrouver
-      un meilleur équilibre émotionnel, améliorer votre sommeil,
-      réduire le stress et renforcer votre confiance intérieure
-      grâce à des séances personnalisées et bienveillantes.
+      La sophrologie vous accompagne à mieux gérer le stress,
+      améliorer votre sommeil et retrouver un véritable équilibre intérieur.
     </p>
 
     <div class="hero-buttons">
 
-      <button class="primary-btn">
+      <button class="primary-btn" id="heroBooking">
         Commencer
       </button>
 
@@ -628,27 +763,37 @@ body{
 
   </div>
 
+  <!-- BLOBS -->
+
+  <div class="blur blur1"></div>
+  <div class="blur blur2"></div>
+
 </section>
 
 <!-- ABOUT -->
 
-<section class="info-section fade-in" id="about">
+<section class="section" id="about">
 
-  <div class="glass-card">
+  <div class="section-container">
 
-    <h2 class="section-title">
-      Une approche douce et moderne
-    </h2>
+    <div class="section-card fade-in">
 
-    <p class="section-text">
-      Chaque séance est adaptée à vos besoins personnels.
-      La sophrologie peut accompagner la gestion du stress,
-      la préparation mentale, les troubles du sommeil,
-      les émotions ou encore le développement de la confiance en soi.
-      Grâce à une méthode progressive mêlant respiration,
-      détente et visualisation positive, vous apprenez à retrouver
-      un véritable équilibre intérieur.
-    </p>
+      <div class="section-tag">
+        À propos
+      </div>
+
+      <h2>
+        Une approche <span>humaine</span>
+      </h2>
+
+      <p>
+        La sophrologie permet d’améliorer le quotidien grâce à des exercices simples
+        de respiration, de relaxation et de visualisation mentale.
+        Chaque séance est adaptée selon les besoins de la personne afin
+        d’apporter un accompagnement calme, moderne et profondément bienveillant.
+      </p>
+
+    </div>
 
   </div>
 
@@ -656,76 +801,26 @@ body{
 
 <!-- SESSIONS -->
 
-<section class="info-section fade-in" id="sessions">
+<section class="section" id="sessions">
 
-  <div class="glass-card">
+  <div class="section-container">
 
-    <h2 class="section-title">
-      Séances personnalisées
-    </h2>
+    <div class="section-card fade-in">
 
-    <p class="section-text">
-      Les séances sont accessibles aux enfants,
-      adolescents et adultes.
-      Chaque accompagnement est construit selon vos objectifs,
-      votre rythme et vos besoins afin de créer
-      une expérience apaisante et profondément humaine.
-    </p>
-
-  </div>
-
-</section>
-
-<!-- RESERVATION -->
-
-<section class="info-section fade-in" id="reservation">
-
-  <div class="glass-card">
-
-    <h2 class="section-title">
-      Réserver une séance
-    </h2>
-
-    <p class="section-text">
-      Sélectionnez le type de séance et le créneau
-      qui vous convient.
-    </p>
-
-    <div class="booking-panel">
-
-      <input class="glass-input" type="text" placeholder="Nom complet">
-
-      <select class="glass-input">
-
-        <option>Type de séance</option>
-        <option>Enfant</option>
-        <option>Adolescent</option>
-        <option>Adulte</option>
-
-      </select>
-
-      <input class="glass-input" type="email" placeholder="Adresse mail">
-
-      <input class="glass-input" type="time">
-
-    </div>
-
-    <div class="calendar-box">
-
-      <div class="calendar-title">
-        Choisissez un créneau
+      <div class="section-tag">
+        Séances
       </div>
 
-      <div class="days">
+      <h2>
+        Des séances adaptées à <span>chaque besoin</span>
+      </h2>
 
-        <div class="day">Lun 10h</div>
-        <div class="day">Lun 14h</div>
-        <div class="day">Mar 11h</div>
-        <div class="day">Mer 15h</div>
-        <div class="day">Jeu 17h</div>
-        <div class="day">Ven 16h</div>
-
-      </div>
+      <p>
+        Gestion du stress, préparation mentale, sommeil, confiance en soi,
+        relaxation ou accompagnement émotionnel :
+        chaque séance est pensée pour créer un espace rassurant,
+        apaisant et personnalisé.
+      </p>
 
     </div>
 
@@ -735,31 +830,197 @@ body{
 
 <!-- CONTACT -->
 
-<section class="info-section fade-in" id="contact">
+<section class="section" id="contact">
 
-  <div class="glass-card">
+  <div class="section-container">
 
-    <h2 class="section-title">
-      Contact
-    </h2>
+    <div class="section-card fade-in">
 
-    <p class="section-text">
-      Vous pouvez prendre contact pour toute question
-      concernant les séances, les disponibilités
-      ou l’accompagnement proposé.
-    </p>
+      <div class="section-tag">
+        Contact
+      </div>
+
+      <h2>
+        Prenez un moment pour <span>vous</span>
+      </h2>
+
+      <p>
+        Une première prise de contact permet d’échanger calmement
+        autour des attentes et des besoins afin de proposer
+        l’accompagnement le plus adapté possible.
+      </p>
+
+    </div>
 
   </div>
 
 </section>
 
+<!-- MODAL -->
+
+<div class="modal-overlay" id="bookingModal">
+
+  <div class="booking-drawer">
+
+    <button class="close-btn" id="closeBooking">
+      ×
+    </button>
+
+    <div class="booking-header">
+
+      <span class="booking-tag">
+        Réservation
+      </span>
+
+      <h2>
+        Demande de rendez-vous
+      </h2>
+
+      <p>
+        Choisissez un créneau puis remplissez
+        les informations nécessaires.
+      </p>
+
+    </div>
+
+    <div class="booking-grid">
+
+      <div class="glass-card">
+
+        <h3>
+          Créneaux disponibles
+        </h3>
+
+        <div class="day-list">
+
+          <button class="day">
+            Lun 10
+          </button>
+
+          <button class="day">
+            Mar 11
+          </button>
+
+          <button class="day">
+            Mer 14
+          </button>
+
+          <button class="day">
+            Jeu 16
+          </button>
+
+        </div>
+
+        <div class="slot-list">
+
+          <button class="slot">
+            09:00
+          </button>
+
+          <button class="slot">
+            10:30
+          </button>
+
+          <button class="slot">
+            14:00
+          </button>
+
+          <button class="slot">
+            16:15
+          </button>
+
+        </div>
+
+      </div>
+
+      <form class="booking-form">
+
+        <div class="glass-card">
+
+          <label>
+            Profil
+          </label>
+
+          <div class="chip-group">
+
+            <input type="radio" id="enfant" name="profil">
+            <label for="enfant" class="chip">
+              Enfant
+            </label>
+
+            <input type="radio" id="adolescent" name="profil">
+            <label for="adolescent" class="chip">
+              Adolescent
+            </label>
+
+            <input type="radio" id="adulte" name="profil" checked>
+            <label for="adulte" class="chip">
+              Adulte
+            </label>
+
+          </div>
+
+        </div>
+
+        <div class="glass-card">
+
+          <select class="glass-input">
+
+            <option>
+              Gestion du stress
+            </option>
+
+            <option>
+              Sommeil
+            </option>
+
+            <option>
+              Relaxation
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="glass-card form-grid">
+
+          <input type="text" class="glass-input" placeholder="Nom">
+          <input type="text" class="glass-input" placeholder="Prénom">
+
+          <input type="email" class="glass-input" placeholder="Adresse mail">
+          <input type="tel" class="glass-input" placeholder="Téléphone">
+
+        </div>
+
+        <div class="glass-card">
+
+          <textarea class="glass-input textarea" placeholder="Expliquez votre besoin..."></textarea>
+
+        </div>
+
+        <button class="submit-btn">
+          Envoyer la demande
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
 <!-- SCRIPT -->
 
 <script>
 
-const fadeElements = document.querySelectorAll('.fade-in');
+/* FADE */
 
-const observer = new IntersectionObserver((entries)=>{
+const fadeElements =
+document.querySelectorAll('.fade-in');
+
+const observer =
+new IntersectionObserver((entries)=>{
 
   entries.forEach(entry=>{
 
@@ -771,14 +1032,53 @@ const observer = new IntersectionObserver((entries)=>{
 
   });
 
+},{threshold:0.2});
+
+fadeElements.forEach(el=>observer.observe(el));
+
+/* BOOKING */
+
+const bookingModal =
+document.getElementById('bookingModal');
+
+const openBooking =
+document.getElementById('openBooking');
+
+const heroBooking =
+document.getElementById('heroBooking');
+
+const closeBooking =
+document.getElementById('closeBooking');
+
+openBooking.addEventListener('click',()=>{
+
+  bookingModal.classList.add('open');
+
 });
 
-fadeElements.forEach(el=>{
-  observer.observe(el);
+heroBooking.addEventListener('click',()=>{
+
+  bookingModal.classList.add('open');
+
+});
+
+closeBooking.addEventListener('click',()=>{
+
+  bookingModal.classList.remove('open');
+
+});
+
+bookingModal.addEventListener('click',(e)=>{
+
+  if(e.target === bookingModal){
+
+    bookingModal.classList.remove('open');
+
+  }
+
 });
 
 </script>
 
 </body>
-
 </html>
