@@ -17,6 +17,8 @@
 
 <style>
 
+/* RESET */
+
 *{
   margin:0;
   padding:0;
@@ -143,7 +145,7 @@ body{
   opacity:0.7;
 }
 
-/* LINKS */
+/* NAV LINKS */
 
 .nav-links{
   display:flex;
@@ -353,7 +355,7 @@ body{
   transform:translateY(-3px);
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
   position:relative;
@@ -702,71 +704,65 @@ body{
 
 <section class="hero">
 
-  <!-- NAVBAR -->
+<nav class="navbar">
 
-  <nav class="navbar">
+<div class="logo">
+SYLVIE PONS
+<span>SOPHROLOGIE</span>
+</div>
 
-    <div class="logo">
-      SYLVIE PONS
-      <span>SOPHROLOGIE</span>
-    </div>
+<div class="nav-links">
+<a href="#about">À propos</a>
+<a href="#sessions">Séances</a>
+<a href="#contact">Contact</a>
+</div>
 
-    <div class="nav-links">
-      <a href="#about">À propos</a>
-      <a href="#sessions">Séances</a>
-      <a href="#contact">Contact</a>
-    </div>
+<div class="nav-actions">
 
-    <div class="nav-actions">
+<button class="nav-btn" id="openBooking">
+Réserver
+</button>
 
-      <button class="nav-btn" id="openBooking">
-        Réserver
-      </button>
+<a href="login.html" class="account-btn">
+👤
+</a>
 
-      <a href="login.html" class="account-btn">
-        👤
-      </a>
+</div>
 
-    </div>
+</nav>
 
-  </nav>
+<div class="hero-content fade-in">
 
-  <!-- CONTENT -->
+<div class="hero-badge">
+✦ Sophrologie & Bien-être
+</div>
 
-  <div class="hero-content fade-in">
+<h1>
+Découvrez <br>
+<span>la sophrologie</span>
+</h1>
 
-    <div class="hero-badge">
-      ✦ Sophrologie & Bien-être
-    </div>
+<p>
+La sophrologie vous accompagne à mieux gérer le stress,
+améliorer votre sommeil et retrouver un véritable équilibre intérieur.
+</p>
 
-    <h1>
-      Découvrez <br>
-      <span>la sophrologie</span>
-    </h1>
+<div class="hero-buttons">
 
-    <p>
-      La sophrologie vous accompagne à mieux gérer le stress,
-      améliorer votre sommeil et retrouver un véritable équilibre intérieur.
-    </p>
+<button class="primary-btn" id="heroBooking">
+Commencer
+</button>
 
-    <div class="hero-buttons">
+<button class="secondary-btn">
+Découvrir
+</button>
 
-      <button class="primary-btn" id="heroBooking">
-        Commencer
-      </button>
+</div>
 
-      <button class="secondary-btn">
-        Découvrir
-      </button>
+</div>
 
-    </div>
-
-  </div>
-
-  <!-- BLOBS -->
-
-  <div class="blur blur1"></div>
-  <div class="blur blur2"></div>
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
 
 </section>
 
@@ -774,28 +770,28 @@ body{
 
 <section class="section" id="about">
 
-  <div class="section-container">
+<div class="section-container">
 
-    <div class="section-card fade-in">
+<div class="section-card fade-in">
 
-      <div class="section-tag">
-        À propos
-      </div>
+<div class="section-tag">
+À propos
+</div>
 
-      <h2>
-        Une approche <span>humaine</span>
-      </h2>
+<h2>
+Une approche <span>humaine</span>
+</h2>
 
-      <p>
-        La sophrologie permet d’améliorer le quotidien grâce à des exercices simples
-        de respiration, de relaxation et de visualisation mentale.
-        Chaque séance est adaptée selon les besoins de la personne afin
-        d’apporter un accompagnement calme, moderne et profondément bienveillant.
-      </p>
+<p>
+La sophrologie permet d’améliorer le quotidien grâce à des exercices simples
+de respiration, de relaxation et de visualisation mentale.
+Chaque séance est adaptée selon les besoins de la personne afin
+d’apporter un accompagnement calme, moderne et profondément bienveillant.
+</p>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
@@ -803,28 +799,28 @@ body{
 
 <section class="section" id="sessions">
 
-  <div class="section-container">
+<div class="section-container">
 
-    <div class="section-card fade-in">
+<div class="section-card fade-in">
 
-      <div class="section-tag">
-        Séances
-      </div>
+<div class="section-tag">
+Séances
+</div>
 
-      <h2>
-        Des séances adaptées à <span>chaque besoin</span>
-      </h2>
+<h2>
+Des séances adaptées à <span>chaque besoin</span>
+</h2>
 
-      <p>
-        Gestion du stress, préparation mentale, sommeil, confiance en soi,
-        relaxation ou accompagnement émotionnel :
-        chaque séance est pensée pour créer un espace rassurant,
-        apaisant et personnalisé.
-      </p>
+<p>
+Gestion du stress, préparation mentale, sommeil, confiance en soi,
+relaxation ou accompagnement émotionnel :
+chaque séance est pensée pour créer un espace rassurant,
+apaisant et personnalisé.
+</p>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
@@ -832,27 +828,27 @@ body{
 
 <section class="section" id="contact">
 
-  <div class="section-container">
+<div class="section-container">
 
-    <div class="section-card fade-in">
+<div class="section-card fade-in">
 
-      <div class="section-tag">
-        Contact
-      </div>
+<div class="section-tag">
+Contact
+</div>
 
-      <h2>
-        Prenez un moment pour <span>vous</span>
-      </h2>
+<h2>
+Prenez un moment pour <span>vous</span>
+</h2>
 
-      <p>
-        Une première prise de contact permet d’échanger calmement
-        autour des attentes et des besoins afin de proposer
-        l’accompagnement le plus adapté possible.
-      </p>
+<p>
+Une première prise de contact permet d’échanger calmement
+autour des attentes et des besoins afin de proposer
+l’accompagnement le plus adapté possible.
+</p>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
@@ -860,153 +856,153 @@ body{
 
 <div class="modal-overlay" id="bookingModal">
 
-  <div class="booking-drawer">
+<div class="booking-drawer">
 
-    <button class="close-btn" id="closeBooking">
-      ×
-    </button>
+<button class="close-btn" id="closeBooking">
+×
+</button>
 
-    <div class="booking-header">
+<div class="booking-header">
 
-      <span class="booking-tag">
-        Réservation
-      </span>
+<span class="booking-tag">
+Réservation
+</span>
 
-      <h2>
-        Demande de rendez-vous
-      </h2>
+<h2>
+Demande de rendez-vous
+</h2>
 
-      <p>
-        Choisissez un créneau puis remplissez
-        les informations nécessaires.
-      </p>
+<p>
+Choisissez un créneau puis remplissez
+les informations nécessaires.
+</p>
 
-    </div>
+</div>
 
-    <div class="booking-grid">
+<div class="booking-grid">
 
-      <div class="glass-card">
+<div class="glass-card">
 
-        <h3>
-          Créneaux disponibles
-        </h3>
+<h3>
+Créneaux disponibles
+</h3>
 
-        <div class="day-list">
+<div class="day-list">
 
-          <button class="day">
-            Lun 10
-          </button>
+<button class="day">
+Lun 10
+</button>
 
-          <button class="day">
-            Mar 11
-          </button>
+<button class="day">
+Mar 11
+</button>
 
-          <button class="day">
-            Mer 14
-          </button>
+<button class="day">
+Mer 14
+</button>
 
-          <button class="day">
-            Jeu 16
-          </button>
+<button class="day">
+Jeu 16
+</button>
 
-        </div>
+</div>
 
-        <div class="slot-list">
+<div class="slot-list">
 
-          <button class="slot">
-            09:00
-          </button>
+<button class="slot">
+09:00
+</button>
 
-          <button class="slot">
-            10:30
-          </button>
+<button class="slot">
+10:30
+</button>
 
-          <button class="slot">
-            14:00
-          </button>
+<button class="slot">
+14:00
+</button>
 
-          <button class="slot">
-            16:15
-          </button>
+<button class="slot">
+16:15
+</button>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
-      <form class="booking-form">
+<form class="booking-form">
 
-        <div class="glass-card">
+<div class="glass-card">
 
-          <label>
-            Profil
-          </label>
+<label>
+Profil
+</label>
 
-          <div class="chip-group">
+<div class="chip-group">
 
-            <input type="radio" id="enfant" name="profil">
-            <label for="enfant" class="chip">
-              Enfant
-            </label>
+<input type="radio" id="enfant" name="profil">
+<label for="enfant" class="chip">
+Enfant
+</label>
 
-            <input type="radio" id="adolescent" name="profil">
-            <label for="adolescent" class="chip">
-              Adolescent
-            </label>
+<input type="radio" id="adolescent" name="profil">
+<label for="adolescent" class="chip">
+Adolescent
+</label>
 
-            <input type="radio" id="adulte" name="profil" checked>
-            <label for="adulte" class="chip">
-              Adulte
-            </label>
+<input type="radio" id="adulte" name="profil" checked>
+<label for="adulte" class="chip">
+Adulte
+</label>
 
-          </div>
+</div>
 
-        </div>
+</div>
 
-        <div class="glass-card">
+<div class="glass-card">
 
-          <select class="glass-input">
+<select class="glass-input">
 
-            <option>
-              Gestion du stress
-            </option>
+<option>
+Gestion du stress
+</option>
 
-            <option>
-              Sommeil
-            </option>
+<option>
+Sommeil
+</option>
 
-            <option>
-              Relaxation
-            </option>
+<option>
+Relaxation
+</option>
 
-          </select>
+</select>
 
-        </div>
+</div>
 
-        <div class="glass-card form-grid">
+<div class="glass-card form-grid">
 
-          <input type="text" class="glass-input" placeholder="Nom">
-          <input type="text" class="glass-input" placeholder="Prénom">
+<input type="text" class="glass-input" placeholder="Nom">
+<input type="text" class="glass-input" placeholder="Prénom">
 
-          <input type="email" class="glass-input" placeholder="Adresse mail">
-          <input type="tel" class="glass-input" placeholder="Téléphone">
+<input type="email" class="glass-input" placeholder="Adresse mail">
+<input type="tel" class="glass-input" placeholder="Téléphone">
 
-        </div>
+</div>
 
-        <div class="glass-card">
+<div class="glass-card">
 
-          <textarea class="glass-input textarea" placeholder="Expliquez votre besoin..."></textarea>
+<textarea class="glass-input textarea" placeholder="Expliquez votre besoin..."></textarea>
 
-        </div>
+</div>
 
-        <button class="submit-btn">
-          Envoyer la demande
-        </button>
+<button class="submit-btn">
+Envoyer la demande
+</button>
 
-      </form>
+</form>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </div>
 
@@ -1022,15 +1018,15 @@ document.querySelectorAll('.fade-in');
 const observer =
 new IntersectionObserver((entries)=>{
 
-  entries.forEach(entry=>{
+entries.forEach(entry=>{
 
-    if(entry.isIntersecting){
+if(entry.isIntersecting){
 
-      entry.target.classList.add('show');
+entry.target.classList.add('show');
 
-    }
+}
 
-  });
+});
 
 },{threshold:0.2});
 
@@ -1052,31 +1048,46 @@ document.getElementById('closeBooking');
 
 openBooking.addEventListener('click',()=>{
 
-  bookingModal.classList.add('open');
+bookingModal.classList.add('open');
 
 });
 
 heroBooking.addEventListener('click',()=>{
 
-  bookingModal.classList.add('open');
+bookingModal.classList.add('open');
 
 });
 
 closeBooking.addEventListener('click',()=>{
 
-  bookingModal.classList.remove('open');
+bookingModal.classList.remove('open');
 
 });
 
 bookingModal.addEventListener('click',(e)=>{
 
-  if(e.target === bookingModal){
+if(e.target === bookingModal){
 
-    bookingModal.classList.remove('open');
+bookingModal.classList.remove('open');
 
-  }
+}
 
 });
+
+/* ACCOUNT */
+
+const user =
+JSON.parse(localStorage.getItem("currentUser"));
+
+if(user){
+
+const accountBtn =
+document.querySelector(".account-btn");
+
+accountBtn.innerHTML =
+user.name.charAt(0).toUpperCase();
+
+}
 
 </script>
 
